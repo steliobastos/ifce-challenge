@@ -25,11 +25,13 @@
 
 /* ═══════════════════════════ CONFIGURAÇÃO ═══════════════════════════ */
 
-/** Roda ao abrir a planilha: cria o menu "IFCE Challenge" com o botão de configuração. */
+/** Roda ao abrir a planilha: cria o menu "IFCE Challenge" com os botões de administração. */
 function onOpen() {
   SpreadsheetApp.getUi()
     .createMenu('IFCE Challenge')
     .addItem('Configurar planilha', 'configurarPeloMenu')
+    .addSeparator()
+    .addItem('Apagar todos os dados (pós-evento)', 'limparDadosPeloMenu')
     .addToUi();
 }
 
@@ -273,6 +275,21 @@ function limparDadosPosEvento() {
     }
   });
   Logger.log('Dados pessoais removidos das abas do evento.');
+}
+
+/** Mesma limpeza acima, mas chamada pelo botão do menu, com confirmação antes de apagar. */
+function limparDadosPeloMenu() {
+  var ui = SpreadsheetApp.getUi();
+  var resposta = ui.alert(
+    'Apagar todos os dados?',
+    'Isso vai APAGAR PERMANENTEMENTE todas as inscrições e dúvidas registradas até agora. ' +
+    'Essa ação não pode ser desfeita. Use apenas depois que o evento já tiver acontecido.\n\n' +
+    'Deseja continuar?',
+    ui.ButtonSet.YES_NO
+  );
+  if (resposta !== ui.Button.YES) return;
+  limparDadosPosEvento();
+  ui.alert('Pronto. Todos os dados foram apagados.');
 }
 
 function linha_(rotulo, valor) {
