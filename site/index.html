@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data: https://i.ytimg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src https://script.google.com https://script.googleusercontent.com; frame-src https://www.youtube-nocookie.com; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#050817">
+<title>IFCE Challenge — Pokémon TCG | 19/09 no IFCE Campus Horizonte</title>
+<meta name="description" content="Campeonato de Pokémon TCG no IFCE Campus Horizonte. Sábado, 19 de setembro, das 9h às 11h, no Laboratório de Informática 2. Entrada gratuita, sem premiação. Torneio no TCG Live, liga casual com cartas físicas, troca de cartas e oficina para iniciantes.">
+<meta property="og:title" content="IFCE Challenge — Pokémon TCG">
+<meta property="og:description" content="19/09, 9h às 11h, Laboratório de Informática 2. Gratuito. Torneio, troca de cartas e oficina para quem nunca jogou.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232F6BFF'/%3E%3Cpath d='M35 12 20 36h10l-3 16 17-25H33z' fill='%23FFD24A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  /* IFCE — manual de aplicação da marca */
+  --ifce:#46A151;
+  --ifce-lite:#6FD07C;
+  --ifce-red:#CD3539;
+  /* Pokémon TCG Live */
+  --blue:#2F6BFF;
+  --blue-deep:#1B3FD0;
+  --cyan:#39D3FF;
+  --indigo:#6C4BFF;
+  --gold:#FFD24A;
+  --gold-deep:#F0A81B;
+
+  --bg:#050817;
+  --bg-2:#0A1030;
+  --ink:#EDF1FF;
+  --ink-soft:#B2BEE2;
+  --ink-dim:#8290B8;
+  --line:rgba(140,170,255,.15);
+  --line-strong:rgba(140,170,255,.32);
+  --card:rgba(120,160,255,.06);
+  --card-hi:rgba(120,160,255,.12);
+
+  --grad-brand:linear-gradient(120deg,var(--cyan) 0%,var(--blue) 52%,var(--indigo) 100%);
+  --grad-gold:linear-gradient(120deg,#FFDE7A 0%,var(--gold) 45%,var(--gold-deep) 100%);
+  --shadow:0 24px 60px -20px rgba(0,0,0,.8);
+  --r:18px;
+  --maxw:1120px;
+  --font:"Open Sans","Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:var(--cyan)}
+h1,h2,h3,h4{line-height:1.15;margin:0 0 .5em;font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(1.7rem,4vw,2.5rem)}
+h3{font-size:clamp(1.05rem,2.4vw,1.3rem)}
+p{margin:0 0 1em}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--gold);color:#201700;padding:.7rem 1.1rem;border-radius:0 0 10px 0;
+  font-weight:800;z-index:200}
+.skip:focus{left:0}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:20px}
+section{position:relative;padding-block:clamp(56px,9vw,104px);overflow:hidden}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:800;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--gold);background:rgba(255,210,74,.10);border:1px solid rgba(255,210,74,.30);
+  padding:.4rem .85rem;border-radius:999px;margin-bottom:1rem}
+.lead{font-size:clamp(1rem,2vw,1.12rem);color:var(--ink-soft);max-width:62ch}
+.gradtext{background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ============ FUNDO ============ */
+.backdrop{position:fixed;inset:0;z-index:-2;overflow:hidden;background:
+  radial-gradient(1100px 700px at 10% -5%,rgba(47,107,255,.30),transparent 62%),
+  radial-gradient(900px 700px at 92% 6%,rgba(108,75,255,.30),transparent 64%),
+  radial-gradient(900px 600px at 50% 112%,rgba(57,211,255,.12),transparent 62%),
+  linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 45%,var(--bg) 100%)}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.45;will-change:transform}
+.orb.a{width:46vw;height:46vw;left:-10vw;top:-8vw;background:radial-gradient(circle,rgba(47,107,255,.55),transparent 68%);animation:float1 22s ease-in-out infinite}
+.orb.b{width:40vw;height:40vw;right:-8vw;top:18vh;background:radial-gradient(circle,rgba(108,75,255,.55),transparent 68%);animation:float2 26s ease-in-out infinite}
+.orb.c{width:34vw;height:34vw;left:34vw;bottom:-12vw;background:radial-gradient(circle,rgba(57,211,255,.40),transparent 68%);animation:float3 30s ease-in-out infinite}
+@keyframes float1{50%{transform:translate3d(8vw,6vh,0) scale(1.12)}}
+@keyframes float2{50%{transform:translate3d(-7vw,9vh,0) scale(1.08)}}
+@keyframes float3{50%{transform:translate3d(5vw,-7vh,0) scale(1.15)}}
+.grid-lines{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.35;
+  background-image:linear-gradient(rgba(140,170,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(140,170,255,.05) 1px,transparent 1px);
+  background-size:64px 64px;mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000 20%,transparent 78%)}
+.pattern{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+  background-image:repeating-linear-gradient(60deg,rgba(140,170,255,.05) 0 1px,transparent 1px 22px),
+                   repeating-linear-gradient(-60deg,rgba(140,170,255,.05) 0 1px,transparent 1px 22px);
+  mask-image:radial-gradient(ellipse 70% 60% at 50% 50%,#000 10%,transparent 75%)}
+.holo{position:absolute;inset:-20%;z-index:-1;pointer-events:none;opacity:.20;
+  background:conic-gradient(from 200deg at 50% 50%,rgba(57,211,255,.35),rgba(108,75,255,.3),rgba(255,210,74,.2),rgba(70,161,81,.3),rgba(57,211,255,.35));
+  filter:blur(80px);animation:spinholo 40s linear infinite}
+@keyframes spinholo{to{transform:rotate(360deg)}}
+
+/* ============ NAV ============ */
+header.nav{position:fixed;top:0;left:0;right:0;z-index:60;border-bottom:1px solid transparent;
+  transition:background .35s,border-color .35s,backdrop-filter .35s}
+header.nav.stuck{background:rgba(5,8,23,.86);backdrop-filter:blur(14px);border-bottom-color:var(--line)}
+.nav-in{display:flex;align-items:center;gap:.9rem;height:72px;flex-wrap:nowrap}
+.brand{display:flex;align-items:center;gap:.65rem;font-weight:800;letter-spacing:-.02em;text-decoration:none;
+  color:var(--ink);font-size:1rem;white-space:nowrap;flex:0 0 auto}
+.brand .mark{width:36px;height:36px;flex:0 0 auto}
+.brand-sub{color:var(--ink-dim);font-weight:700}
+@media(max-width:560px){.brand-sub{display:none}}
+.nav-links{display:flex;gap:.2rem;margin-left:auto;align-items:center}
+.nav-links a{color:var(--ink-soft);text-decoration:none;font-size:.88rem;font-weight:600;padding:.5rem .65rem;
+  border-radius:10px;transition:.25s;white-space:nowrap;flex:0 0 auto}
+.nav-links a:hover{color:var(--ink);background:var(--card-hi)}
+.nav-cta{margin-left:.5rem}
+.nav-links a.btn-primary,.nav-links a.btn-primary:hover{color:#241A00;background:var(--grad-gold)}
+.burger{display:none;margin-left:auto;background:var(--card);border:1px solid var(--line);color:var(--ink);
+  border-radius:12px;padding:.55rem .7rem;font-size:1rem;cursor:pointer;line-height:1}
+@media(max-width:900px){
+  .nav-links{position:fixed;inset:72px 0 auto 0;background:rgba(5,8,23,.98);backdrop-filter:blur(14px);flex-direction:column;
+    align-items:stretch;padding:1rem 20px 1.4rem;border-bottom:1px solid var(--line);transform:translateY(-135%);
+    transition:transform .4s cubic-bezier(.2,.8,.2,1);margin:0}
+  .nav-links.open{transform:translateY(0)}
+  .nav-links a{padding:.8rem .6rem;font-size:1rem}
+  .burger{display:block}
+  .nav-cta{margin:.5rem 0 0;text-align:center;justify-content:center}
+}
+
+/* ============ BOTÕES ============ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;border:0;cursor:pointer;font-family:inherit;
+  font-weight:800;font-size:.95rem;padding:.85rem 1.5rem;border-radius:999px;text-decoration:none;position:relative;
+  overflow:hidden;transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s,background .22s}
+.btn-primary{background:var(--grad-gold);color:#241A00;box-shadow:0 10px 26px -12px rgba(255,210,74,.9)}
+.btn-primary:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 18px 38px -12px rgba(255,210,74,.95)}
+.btn-blue{background:linear-gradient(120deg,var(--blue) 0%,var(--blue-deep) 100%);color:#fff;
+  box-shadow:0 10px 26px -12px rgba(47,107,255,.95)}
+.btn-blue:hover{transform:translateY(-3px) scale(1.02)}
+.btn-ghost{background:var(--card);color:var(--ink);border:1px solid var(--line-strong)}
+.btn-ghost:hover{background:var(--card-hi);transform:translateY(-2px)}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 20%,rgba(255,255,255,.4) 50%,transparent 80%);
+  transform:translateX(-120%);transition:transform .7s}
+.btn:hover::after{transform:translateX(120%)}
+.btn[disabled]{opacity:.6;cursor:not-allowed;transform:none!important}
+
+/* ============ HERO ============ */
+.hero{padding-top:clamp(116px,16vw,172px);padding-bottom:clamp(48px,7vw,86px)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,4vw,56px);align-items:center}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(2.4rem,7vw,4.4rem);margin-bottom:.35em;font-weight:800}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line>span{display:block;animation:riseIn .9s cubic-bezier(.2,.9,.2,1) both}
+.hero h1 .line:nth-child(2)>span{animation-delay:.12s}
+@keyframes riseIn{from{transform:translateY(105%);opacity:0}to{transform:translateY(0);opacity:1}}
+.hero .lead{animation:fadeUp .9s .3s both}
+@keyframes fadeUp{from{transform:translateY(18px);opacity:0}to{transform:translateY(0);opacity:1}}
+.facts{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.4rem 0 1.8rem;animation:fadeUp .9s .42s both}
+.fact{display:inline-flex;align-items:center;gap:.5rem;background:var(--card);border:1px solid var(--line);
+  padding:.55rem .95rem;border-radius:999px;font-size:.88rem;font-weight:700;color:var(--ink-soft)}
+.fact b{color:var(--ink);font-weight:800}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;animation:fadeUp .9s .54s both}
+
+.stack{position:relative;height:clamp(300px,42vw,430px)}
+.tcard{position:absolute;width:clamp(140px,19vw,196px);aspect-ratio:5/7;border-radius:16px;border:1px solid var(--line-strong);
+  box-shadow:var(--shadow);display:grid;place-items:center;overflow:hidden;background:var(--g)}
+.tcard::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.35) 48%,transparent 62%);
+  transform:translateX(-140%);animation:shine 5.5s ease-in-out infinite}
+@keyframes shine{0%,65%{transform:translateX(-140%)}85%,100%{transform:translateX(140%)}}
+.tcard i{position:relative;z-index:2;font-style:normal;color:#fff;font-size:clamp(2rem,5vw,3rem);
+  filter:drop-shadow(0 6px 14px rgba(0,0,0,.55))}
+.tcard.c1{--g:linear-gradient(160deg,#2F6BFF,#0C2A80);left:2%;top:14%;transform:rotate(-13deg);animation:sway1 9s ease-in-out infinite}
+.tcard.c2{--g:linear-gradient(160deg,#39D3FF,#1450C8);left:31%;top:2%;transform:rotate(-2deg);animation:sway2 8s ease-in-out infinite;z-index:3}
+.tcard.c3{--g:linear-gradient(160deg,#6C4BFF,#2A1C8C);left:60%;top:16%;transform:rotate(11deg);animation:sway3 10s ease-in-out infinite}
+.tcard.c4{--g:linear-gradient(160deg,#FFD24A,#C9860A);left:20%;top:48%;transform:rotate(7deg);animation:sway2 11s ease-in-out infinite .6s;z-index:2}
+.tcard.c4 i{color:#241A00}
+.tcard.c5{--g:linear-gradient(160deg,#6FD07C,#1C6B36);left:52%;top:52%;transform:rotate(-8deg);animation:sway1 12s ease-in-out infinite .3s}
+@keyframes sway1{50%{transform:rotate(-13deg) translateY(-16px)}}
+@keyframes sway2{50%{transform:rotate(-2deg) translateY(-22px)}}
+@keyframes sway3{50%{transform:rotate(11deg) translateY(-13px)}}
+@media(max-width:900px){.stack{height:280px;max-width:430px;margin-inline:auto}}
+
+.countdown{display:flex;gap:.7rem;margin-top:1.9rem;flex-wrap:wrap;animation:fadeUp .9s .66s both}
+.cd{min-width:76px;flex:1 1 76px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:.7rem .5rem;text-align:center}
+.cd b{display:block;font-size:clamp(1.3rem,3.4vw,1.9rem);font-weight:800;font-variant-numeric:tabular-nums;
+  background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cd span{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);font-weight:700}
+.cd.live b{background:var(--grad-gold);-webkit-background-clip:text;background-clip:text}
+
+/* ============ ÍCONES ============ */
+.i{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.card .ico .i{width:26px;height:26px;stroke-width:1.6}
+.fact .i{width:17px;height:17px;color:var(--cyan)}
+.alert .ai .i{width:26px;height:26px;color:var(--gold)}
+
+/* ============ MARCA IFCE ============ */
+.ifce-plate{display:inline-flex;align-items:center;justify-content:center;background:#fff;border-radius:12px;
+  padding:18px 22px;box-shadow:0 14px 34px -16px rgba(0,0,0,.8)}
+.ifce-plate img{height:96px;width:auto}
+.ifce-plate.sm{padding:12px 14px;border-radius:10px}
+.ifce-plate.sm img{height:62px}
+.ifce-fallback{display:flex;align-items:center;gap:.6rem;color:#1B2430;font-weight:800;font-size:.9rem;line-height:1.2}
+.ifce-fallback .sq{width:34px;height:34px;border-radius:8px;background:var(--ifce);display:grid;place-items:center;
+  color:#fff;font-size:.66rem;font-weight:800;letter-spacing:-.02em}
+.ifce-fallback small{display:block;font-size:.72rem;font-weight:600;color:#5A6676}
+.realiza{display:flex;flex-wrap:wrap;align-items:center;gap:1.6rem;justify-content:center;text-align:center}
+.realiza .rot{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim);font-weight:800;width:100%}
+
+/* ============ REVEAL ============ */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}
+
+/* ============ CARDS ============ */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem;margin-top:2.4rem}
+.card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.5rem 1.4rem;
+  overflow:hidden;transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s,background .3s}
+.card:hover{transform:translateY(-6px);border-color:var(--line-strong);background:var(--card-hi)}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--grad-brand);transform:scaleX(0);
+  transform-origin:left;transition:transform .45s}
+.card:hover::before{transform:scaleX(1)}
+.card .ico{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;margin-bottom:1rem;
+  background:linear-gradient(150deg,rgba(57,211,255,.20),rgba(108,75,255,.22));border:1px solid var(--line-strong);color:var(--cyan)}
+.card h3{margin-bottom:.45em}
+.card p{color:var(--ink-soft);font-size:.95rem;margin:0}
+.tag{display:inline-block;margin-top:.9rem;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ifce-lite);background:rgba(111,208,124,.10);border:1px solid rgba(111,208,124,.32);padding:.25rem .6rem;border-radius:8px}
+.tag.gold{color:var(--gold);background:rgba(255,210,74,.10);border-color:rgba(255,210,74,.32)}
+
+/* ============ TIMELINE ============ */
+.tl{position:relative;margin-top:2.6rem;padding-left:34px}
+.tl::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl-fill{position:absolute;left:9px;top:6px;width:2px;background:var(--grad-brand);height:0;transition:height .2s linear;
+  box-shadow:0 0 14px rgba(47,107,255,.8)}
+.tl-item{position:relative;padding:0 0 1.6rem}
+.tl-item::before{content:"";position:absolute;left:-32px;top:7px;width:20px;height:20px;border-radius:50%;background:var(--bg-2);
+  border:2px solid var(--line-strong);transition:.4s}
+.tl-item.on::before{border-color:var(--cyan);background:var(--cyan);box-shadow:0 0 0 6px rgba(57,211,255,.16)}
+.tl-time{font-weight:800;font-size:1.02rem;background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;
+  color:transparent;font-variant-numeric:tabular-nums}
+.tl-title{font-weight:800;margin:.05rem 0 .2rem}
+.tl-desc{color:var(--ink-soft);font-size:.93rem;margin:0}
+
+/* ============ SPLIT / VÍDEO ============ */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,52px);align-items:center}
+@media(max-width:900px){.split{grid-template-columns:1fr}}
+.video-shell{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line-strong);box-shadow:var(--shadow);
+  aspect-ratio:16/9;background:#000;cursor:pointer}
+.video-shell img{width:100%;height:100%;object-fit:cover;transition:transform .6s,filter .4s}
+.video-shell:hover img{transform:scale(1.05);filter:brightness(.72)}
+.video-shell iframe{width:100%;height:100%;border:0;display:block}
+.play{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.play i{width:76px;height:76px;border-radius:50%;background:var(--grad-gold);display:grid;place-items:center;font-style:normal;
+  font-size:1.5rem;color:#241A00;box-shadow:0 14px 40px -10px rgba(0,0,0,.9);animation:ping 2.6s ease-out infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(255,210,74,.55)}70%{box-shadow:0 0 0 26px rgba(255,210,74,0)}100%{box-shadow:0 0 0 0 rgba(255,210,74,0)}}
+.vcap{position:absolute;left:0;right:0;bottom:0;padding:1.4rem 1.2rem .9rem;font-size:.85rem;color:#E7EDFF;font-weight:700;
+  background:linear-gradient(0deg,rgba(0,0,0,.88),transparent);pointer-events:none}
+.checklist{list-style:none;padding:0;margin:1.4rem 0 0;display:grid;gap:.8rem}
+.checklist li{display:flex;gap:.8rem;align-items:flex-start;color:var(--ink-soft);font-size:.97rem}
+.checklist li::before{content:"✓";flex:0 0 24px;height:24px;border-radius:8px;display:grid;place-items:center;font-size:.8rem;
+  font-weight:800;background:rgba(111,208,124,.14);color:var(--ifce-lite);border:1px solid rgba(111,208,124,.34);margin-top:2px}
+
+/* ============ ALERTA ============ */
+.alert{display:flex;gap:1rem;align-items:flex-start;background:linear-gradient(120deg,rgba(255,210,74,.10),rgba(255,210,74,.03));
+  border:1px solid rgba(255,210,74,.32);border-radius:var(--r);padding:1.2rem 1.3rem;margin-top:2rem}
+.alert .ai{line-height:1}
+.alert p{margin:0;font-size:.95rem;color:#F6EACA}
+.alert b{color:var(--gold)}
+
+/* ============ FORMULÁRIOS ============ */
+.form-wrap{background:linear-gradient(160deg,rgba(120,160,255,.09),rgba(120,160,255,.02));border:1px solid var(--line-strong);
+  border-radius:24px;padding:clamp(1.4rem,3.5vw,2.6rem);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.form-wrap::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--grad-brand)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.1rem}
+@media(max-width:720px){.fgrid{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:.42rem}
+.field.full{grid-column:1/-1}
+label{font-size:.83rem;font-weight:800;letter-spacing:.03em;color:var(--ink-soft)}
+label .req{color:var(--gold)}
+input[type=text],input[type=email],input[type=tel],input[type=date],select,textarea{font-family:inherit;font-size:.96rem;
+  color:var(--ink);background:rgba(0,0,0,.34);border:1px solid var(--line);border-radius:12px;padding:.8rem .9rem;width:100%;
+  transition:border-color .25s,box-shadow .25s,background .25s}
+textarea{resize:vertical;min-height:96px}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--cyan);box-shadow:0 0 0 4px rgba(57,211,255,.18);background:rgba(0,0,0,.46)}
+input.err,select.err,textarea.err{border-color:#FF7B7B;box-shadow:0 0 0 4px rgba(255,123,123,.14)}
+select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--ink-dim) 50%),linear-gradient(135deg,var(--ink-dim) 50%,transparent 50%);
+  background-position:calc(100% - 20px) 55%,calc(100% - 14px) 55%;background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:2.4rem}
+select option{background:#0A1030;color:var(--ink)}
+.hint{font-size:.78rem;color:var(--ink-dim)}
+.err-msg{font-size:.78rem;color:#FF9B9B;display:none}
+.field.invalid .err-msg{display:block}
+.opts{display:grid;gap:.6rem;grid-template-columns:repeat(auto-fit,minmax(215px,1fr))}
+.opt{display:flex;gap:.7rem;align-items:flex-start;background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:12px;
+  padding:.75rem .85rem;cursor:pointer;transition:.25s;font-size:.9rem}
+.opt:hover{border-color:var(--line-strong);background:rgba(0,0,0,.42)}
+.opt input{accent-color:var(--blue);margin-top:.18rem;flex:0 0 auto;width:17px;height:17px;cursor:pointer}
+.opt.checked{border-color:var(--cyan);background:rgba(57,211,255,.10)}
+.opt span small{display:block;color:var(--ink-dim);font-size:.78rem;font-weight:600}
+.opt span b{font-weight:800}
+.guard{display:none;grid-column:1/-1;border:1px dashed rgba(255,210,74,.4);background:rgba(255,210,74,.05);border-radius:16px;
+  padding:1.1rem;gap:1rem 1.1rem;grid-template-columns:1fr 1fr}
+.guard.show{display:grid}
+@media(max-width:720px){.guard.show{grid-template-columns:1fr}}
+.guard .gtitle{grid-column:1/-1;font-weight:800;color:var(--gold);font-size:.92rem;margin:0}
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+.form-foot{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;margin-top:1.6rem}
+.status{font-size:.9rem;font-weight:700;min-height:1.3em}
+.status.ok{color:var(--ifce-lite)}
+.status.bad{color:#FF9B9B}
+.spin{display:inline-block;width:15px;height:15px;border:2px solid rgba(0,0,0,.25);border-top-color:#241A00;border-radius:50%;
+  animation:spin .7s linear infinite}
+.btn-blue .spin{border-color:rgba(255,255,255,.35);border-top-color:#fff}
+@keyframes spin{to{transform:rotate(360deg)}}
+.success{display:none;text-align:center;padding:2.2rem 1rem}
+.success.show{display:block;animation:fadeUp .6s both}
+.success .big{width:92px;height:92px;border-radius:50%;margin:0 auto 1.2rem;display:grid;place-items:center;font-size:2.5rem;
+  background:var(--grad-gold);color:#241A00;animation:pop .6s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes pop{from{transform:scale(0) rotate(-25deg)}to{transform:scale(1) rotate(0)}}
+.form-hidden{display:none!important}
+.privacy{font-size:.8rem;color:var(--ink-dim);margin-top:1.4rem;border-top:1px solid var(--line);padding-top:1.1rem}
+.privacy a{color:var(--cyan)}
+
+/* ============ REGULAMENTO ============ */
+.reg-tools{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;margin:1.6rem 0 1.2rem}
+.search{flex:1 1 240px;position:relative}
+.search input{padding-left:2.5rem}
+.search::before{content:"🔎";position:absolute;left:.9rem;top:50%;transform:translateY(-50%);font-size:.9rem;opacity:.7;pointer-events:none}
+details.acc{border:1px solid var(--line);border-radius:14px;background:var(--card);margin-bottom:.7rem;overflow:hidden;
+  transition:border-color .3s,background .3s}
+details.acc[open]{border-color:rgba(57,211,255,.4);background:var(--card-hi)}
+details.acc summary{cursor:pointer;list-style:none;padding:1rem 1.2rem;font-weight:800;font-size:1rem;display:flex;align-items:center;gap:.7rem}
+details.acc summary::-webkit-details-marker{display:none}
+details.acc summary::after{content:"＋";margin-left:auto;font-weight:800;color:var(--cyan);transition:transform .35s;font-size:1.1rem}
+details.acc[open] summary::after{transform:rotate(135deg)}
+details.acc summary:hover{background:rgba(255,255,255,.03)}
+.acc-body{padding:0 1.2rem 1.3rem;color:var(--ink-soft);font-size:.95rem;animation:accIn .45s ease both}
+@keyframes accIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.acc-body h3{color:var(--ink);font-size:1rem;margin:1.3em 0 .4em}
+.acc-body strong{color:var(--ink)}
+.acc-body ul,.acc-body ol{padding-left:1.2rem;margin:0 0 1em}
+.acc-body li{margin-bottom:.4em}
+.acc-body blockquote{margin:1em 0;padding:.8rem 1rem;border-left:3px solid var(--gold);background:rgba(255,210,74,.06);border-radius:0 10px 10px 0}
+.acc-body blockquote p{margin:0;font-size:.9rem;color:#F3E7C6}
+.acc-body table{width:100%;border-collapse:collapse;margin:0;font-size:.89rem;min-width:420px}
+.tblscroll{overflow-x:auto;margin-bottom:1.2em}
+.acc-body th,.acc-body td{text-align:left;padding:.6rem .7rem;border-bottom:1px solid var(--line)}
+.acc-body th{color:var(--ink);font-weight:800;background:rgba(255,255,255,.04)}
+.acc-body hr{border:0;border-top:1px solid var(--line);margin:1.4em 0}
+.acc-body em{color:var(--ink-dim)}
+.no-hit{display:none;color:var(--ink-dim);font-size:.9rem;padding:1rem 0}
+
+/* ============ RODAPÉ ============ */
+footer{border-top:1px solid var(--line);padding-block:3rem 2.4rem;background:rgba(0,0,0,.35);position:relative}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem}
+@media(max-width:760px){.foot-grid{grid-template-columns:1fr}}
+footer h4{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:.9em}
+footer a{display:block;color:var(--ink-soft);text-decoration:none;font-size:.92rem;padding:.25rem 0;transition:.2s}
+footer a:hover{color:var(--cyan);transform:translateX(3px)}
+.foot-note{margin-top:2.4rem;padding-top:1.6rem;border-top:1px solid var(--line);font-size:.82rem;color:var(--ink-dim);
+  display:flex;flex-wrap:wrap;gap:.6rem;justify-content:space-between}
+.to-top{position:fixed;right:18px;bottom:18px;z-index:50;width:46px;height:46px;border-radius:50%;border:1px solid var(--line-strong);
+  background:rgba(5,8,23,.88);backdrop-filter:blur(8px);color:var(--ink);font-size:1.1rem;cursor:pointer;display:grid;
+  place-items:center;opacity:0;pointer-events:none;transition:.35s}
+.to-top.show{opacity:1;pointer-events:auto}
+.to-top:hover{background:var(--grad-gold);color:#241A00;transform:translateY(-3px)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+}
+@media print{
+  .backdrop,.grid-lines,.pattern,.holo,header.nav,.to-top,#inscricao,#duvidas,.hero-cta,.countdown,.stack{display:none!important}
+  body{background:#fff;color:#000}
+  section{padding-block:0}
+  details.acc{border-color:#ccc;background:none}
+  .acc-body,.lead,.tl-desc{color:#000}
+  .gradtext{color:#000;-webkit-text-fill-color:#000}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#top">Pular para o conteúdo</a>
+<div class="backdrop"><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div></div>
+<div class="grid-lines"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2.5" y="3.5" width="19" height="13" rx="2"/><path d="M8.5 20.5h7M12 16.5v4"/></symbol>
+    <symbol id="i-cards" viewBox="0 0 24 24"><rect x="3" y="6" width="10" height="14" rx="2" transform="rotate(-8 8 13)"/><rect x="11" y="4" width="10" height="14" rx="2" transform="rotate(8 16 11)"/></symbol>
+    <symbol id="i-swap" viewBox="0 0 24 24"><path d="M3.5 8.5h15m0 0-3.6-3.6M18.5 8.5l-3.6 3.6M20.5 15.5h-15m0 0 3.6-3.6M5.5 15.5l3.6 3.6"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24"><path d="M12 4 2.8 8.6 12 13.2l9.2-4.6z"/><path d="M6.5 10.8v4.4c0 1.6 2.5 2.9 5.5 2.9s5.5-1.3 5.5-2.9v-4.4M21.2 8.6v5.6"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13.2 2.5 4.8 13.4h6l-1.6 8.1 8.7-11.1h-6.2z"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.2" y="5" width="17.6" height="16" rx="2.5"/><path d="M3.2 10h17.6M8 2.8v4M16 2.8v4"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2.1"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.5s7-6.2 7-11.1A7 7 0 0 0 5 10.4c0 4.9 7 11.1 7 11.1Z"/><circle cx="12" cy="10.2" r="2.6"/></symbol>
+    <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 9.2V6.6a1.6 1.6 0 0 1 1.6-1.6h14.8A1.6 1.6 0 0 1 21 6.6v2.6a2.8 2.8 0 0 0 0 5.6v2.6a1.6 1.6 0 0 1-1.6 1.6H4.6A1.6 1.6 0 0 1 3 17.4v-2.6a2.8 2.8 0 0 0 0-5.6Z"/><path d="M13.5 5v14" stroke-dasharray="2 2.6"/></symbol>
+    <symbol id="i-family" viewBox="0 0 24 24"><circle cx="7.5" cy="7" r="2.8"/><circle cx="17" cy="7.6" r="2.4"/><path d="M2.8 20.5c0-2.9 2.1-5 4.7-5s4.7 2.1 4.7 5M13.6 20.5c0-2.4 1.5-4.3 3.4-4.3s3.4 1.9 3.4 4.3"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.3 2.7 5.5 6.1.9-4.4 4.3 1 6-5.4-2.9-5.4 2.9 1-6L3.2 9.7l6.1-.9z"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M3 8.6h3.4L8.2 6h7.6l1.8 2.6H21a1.6 1.6 0 0 1 1.6 1.6v8a1.6 1.6 0 0 1-1.6 1.6H3a1.6 1.6 0 0 1-1.6-1.6v-8A1.6 1.6 0 0 1 3 8.6Z"/><circle cx="12" cy="14" r="3.4"/></symbol>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top"><svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="mk" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#39D3FF"/><stop offset=".55" stop-color="#2F6BFF"/><stop offset="1" stop-color="#6C4BFF"/></linearGradient></defs><rect x="1" y="1" width="38" height="38" rx="11" fill="url(#mk)"/><rect x="9.5" y="8" width="14" height="20" rx="3" fill="rgba(255,255,255,.28)" transform="rotate(-10 16.5 18)"/><rect x="16.5" y="10" width="14" height="20" rx="3" fill="rgba(255,255,255,.20)" transform="rotate(9 23.5 20)"/><path d="M22.6 12.2 16 22.4h4.4l-1.2 6.4 6.9-10.2h-4.4z" fill="#FFD24A"/></svg> IFCE Challenge <span class="brand-sub">· Pokémon TCG</span></a>
+    <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <nav class="nav-links" id="navlinks">
+      <a href="#evento">O evento</a>
+      <a href="#programacao">Programação</a>
+      <a href="#aprenda">Aprenda a jogar</a>
+      <a href="#regulamento">Regulamento</a>
+      <a class="btn btn-primary nav-cta" href="#inscricao">Inscreva-se grátis</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="hero"><div class="holo"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">IFCE Campus Horizonte · 19 de setembro</span>
+      <h1>
+        <span class="line"><span>IFCE <em style="font-style:normal" class="gradtext">Challenge</em></span></span>
+        <span class="line"><span>Pokémon TCG</span></span>
+      </h1>
+      <p class="lead">Um sábado de manhã inteiro dedicado ao Pokémon Estampas Ilustradas: torneio no <strong>Pokémon TCG Live</strong>, liga casual com cartas físicas, espaço livre de troca e uma oficina para quem <strong>nunca jogou</strong>. Entrada gratuita, aberta à comunidade.</p>
+
+      <div class="facts">
+        <span class="fact"><svg class="i" aria-hidden="true"><use href="#i-calendar"/></svg> <b>Sábado, 19/09/2026</b></span>
+        <span class="fact"><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg> <b>9h às 11h</b></span>
+        <span class="fact"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg> <b>Laboratório de Informática 2</b></span>
+        <span class="fact"><svg class="i" aria-hidden="true"><use href="#i-ticket"/></svg> <b>Gratuito</b></span>
+      </div>
+
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#inscricao">Garantir minha vaga ⚡</a>
+        <a class="btn btn-ghost" href="#aprenda">Nunca joguei, e agora?</a>
+      </div>
+
+      <div class="countdown" id="countdown" aria-label="Contagem regressiva para o evento">
+        <div class="cd"><b id="cd-d">--</b><span>dias</span></div>
+        <div class="cd"><b id="cd-h">--</b><span>horas</span></div>
+        <div class="cd"><b id="cd-m">--</b><span>min</span></div>
+        <div class="cd"><b id="cd-s">--</b><span>seg</span></div>
+      </div>
+    </div>
+
+    <div class="stack" aria-hidden="true">
+      <div class="tcard c1"><i><svg class="i" aria-hidden="true"><use href="#i-monitor"/></svg></i></div>
+      <div class="tcard c2"><i><svg class="i" aria-hidden="true"><use href="#i-bolt"/></svg></i></div>
+      <div class="tcard c3"><i><svg class="i" aria-hidden="true"><use href="#i-cards"/></svg></i></div>
+      <div class="tcard c4"><i><svg class="i" aria-hidden="true"><use href="#i-swap"/></svg></i></div>
+      <div class="tcard c5"><i><svg class="i" aria-hidden="true"><use href="#i-cap"/></svg></i></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= REALIZAÇÃO ================= -->
+<section id="realizacao" style="padding-block:clamp(28px,5vw,48px)">
+  <div class="wrap realiza rv">
+    <span class="rot">Realização</span>
+    <span class="ifce-plate">
+      <img src="img/logo-ifce.png" alt="Instituto Federal do Ceará — IFCE"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <span class="ifce-fallback" style="display:none"><span class="sq">IFCE</span><span>Instituto Federal do Ceará<small>Campus Horizonte</small></span></span>
+    </span>
+  </div>
+</section>
+
+<!-- ================= O EVENTO ================= -->
+<section id="evento"><div class="pattern"></div>
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Quatro atividades, uma manhã</span>
+      <h2>Tem lugar para <span class="gradtext">quem compete</span><br>e para quem está começando</h2>
+      <p class="lead">O IFCE Challenge não tem taxa de inscrição e <strong>não distribui premiação</strong>. É um encontro de integração entre estudantes do IFCE e a comunidade, com competição amigável no centro e espaço de sobra para aprender e trocar cartas.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card rv d1">
+        <div class="ico"><svg class="i" aria-hidden="true"><use href="#i-monitor"/></svg></div>
+        <h3>Torneio no TCG Live</h3>
+        <p>Nos computadores do laboratório, com sua própria conta. Três rodadas suíças em Md1, de 30 minutos cada. Sem lista de deck e sem mata-mata — vence quem somar mais pontos.</p>
+        <span class="tag">Atividade principal</span>
+      </article>
+      <article class="card rv d2">
+        <div class="ico"><svg class="i" aria-hidden="true"><use href="#i-cards"/></svg></div>
+        <h3>Liga casual com cartas físicas</h3>
+        <p>Trouxe seu baralho? Se houver pelo menos 4 jogadores com deck físico, rola uma liga casual em suíço Md1, nos mesmos horários de rodada, organizada pelo Slowpo.ke.</p>
+        <span class="tag">Mínimo de 4 jogadores</span>
+      </article>
+      <article class="card rv d3">
+        <div class="ico"><svg class="i" aria-hidden="true"><use href="#i-swap"/></svg></div>
+        <h3>Espaço de troca de cartas</h3>
+        <p>Aberto durante todo o evento. Traga seu binder e negocie com outros participantes. Só troca — nada de compra e venda dentro do campus.</p>
+        <span class="tag">O evento inteiro</span>
+      </article>
+      <article class="card rv d4">
+        <div class="ico"><svg class="i" aria-hidden="true"><use href="#i-cap"/></svg></div>
+        <h3>Oficina "Aprenda a jogar"</h3>
+        <p>Para quem nunca jogou. Tudo pelo TCG Live, com os decks iniciais gratuitos do jogo e monitores acompanhando as primeiras partidas. Não precisa levar cartas.</p>
+        <span class="tag gold">Iniciantes</span>
+      </article>
+    </div>
+
+    <div class="alert rv">
+      <span class="ai"><svg class="i" aria-hidden="true"><use href="#i-family"/></svg></span>
+      <p><b>Menores de 16 anos</b> só podem participar <b>acompanhados de pai, mãe ou responsável legal</b>, presente durante todo o evento. Participantes de 16 e 17 anos podem vir sozinhos mediante autorização assinada pelo responsável, entregue na recepção.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROGRAMAÇÃO ================= -->
+<section id="programacao">
+  <div class="wrap">
+    <div class="split">
+      <div class="rv">
+        <span class="eyebrow">Programação</span>
+        <h2>Duas horas <span class="gradtext">cronometradas</span></h2>
+        <p class="lead">São exatamente 120 minutos, então tudo começa no horário. O check-in fecha às <strong>9h10</strong> — quem chegar depois fica fora do pareamento da primeira rodada.</p>
+        <ul class="checklist">
+          <li>3 rodadas suíças de 30 minutos, em Md1 (melhor de 1)</li>
+          <li>Sem mata-mata: a classificação sai da soma de pontos</li>
+          <li>Vitória 3 pts · Empate 1 pt · Derrota 0 pts</li>
+          <li>Oficina e troca de cartas acontecem em paralelo às rodadas</li>
+        </ul>
+      </div>
+      <div class="rv d2">
+        <div class="tl" id="tl">
+          <div class="tl-fill" id="tlfill"></div>
+          <div class="tl-item"><div class="tl-time">09h00 — 09h10</div><div class="tl-title">Credenciamento e check-in</div><p class="tl-desc">Abertura do espaço de troca de cartas.</p></div>
+          <div class="tl-item"><div class="tl-time">09h10 — 09h20</div><div class="tl-title">Abertura e pareamentos</div><p class="tl-desc">Explicação do regulamento e divulgação dos confrontos da 1ª rodada.</p></div>
+          <div class="tl-item"><div class="tl-time">09h20 — 09h50</div><div class="tl-title">1ª rodada · Oficina</div><p class="tl-desc">Rodada no TCG Live e com cartas físicas. Em paralelo, a oficina "Aprenda a jogar".</p></div>
+          <div class="tl-item"><div class="tl-time">09h50 — 10h20</div><div class="tl-title">2ª rodada</div><p class="tl-desc">Troca de cartas e partidas livres para quem estiver fora da rodada.</p></div>
+          <div class="tl-item"><div class="tl-time">10h20 — 10h50</div><div class="tl-title">3ª rodada</div><p class="tl-desc">Última rodada da fase suíça.</p></div>
+          <div class="tl-item"><div class="tl-time">10h50 — 11h00</div><div class="tl-title">Classificação e encerramento</div><p class="tl-desc">Apuração dos pontos, anúncio dos primeiros colocados e organização do espaço.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= APRENDA ================= -->
+<section id="aprenda"><div class="pattern"></div>
+  <div class="wrap">
+    <div class="split">
+      <div class="rv">
+        <span class="eyebrow">Nunca jogou? Comece por aqui</span>
+        <h2>Assista, aprenda e <span class="gradtext">jogue no mesmo dia</span></h2>
+        <p class="lead">A oficina do evento é feita inteiramente no Pokémon TCG Live, que já entrega <strong>decks iniciais gratuitos</strong> para cada conta nova. Não é preciso levar cartas nem ter baralho.</p>
+        <ul class="checklist">
+          <li>Crie sua conta gratuita do Pokémon Trainer Club <strong>antes do evento</strong></li>
+          <li>Instale e abra o Pokémon TCG Live pelo menos uma vez em casa</li>
+          <li>Anote seu <strong>nick</strong> — ele é usado nos pareamentos</li>
+          <li>Chegue às 9h: criar conta no dia consome toda a oficina</li>
+        </ul>
+        <p style="margin-top:1.4rem"><a class="btn btn-ghost" href="https://tcg.pokemon.com/pt-br/tcgl/" target="_blank" rel="noopener">Baixar o Pokémon TCG Live ↗</a></p>
+      </div>
+      <div class="rv d2">
+        <div class="video-shell" id="video" role="button" tabindex="0" aria-label="Assistir ao vídeo oficial de como jogar Pokémon Estampas Ilustradas">
+          <img src="https://i.ytimg.com/vi/rnpwuuchI40/maxresdefault.jpg" alt="Vídeo oficial: como jogar Pokémon Estampas Ilustradas" loading="lazy">
+          <div class="play"><i>▶</i></div>
+          <div class="vcap">Vídeo oficial · Como jogar Pokémon Estampas Ilustradas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ================= INSCRIÇÃO ================= -->
+<section id="inscricao"><div class="holo" style="opacity:.14"></div>
+  <div class="wrap">
+    <div class="rv" style="text-align:center;max-width:720px;margin-inline:auto">
+      <span class="eyebrow">Inscrição gratuita</span>
+      <h2>Garanta sua <span class="gradtext">vaga</span></h2>
+      <p class="lead" style="margin-inline:auto">As vagas do torneio no TCG Live são limitadas pelo número de computadores do laboratório, por ordem de inscrição. A inscrição também vale para quem vai só à oficina ou ao espaço de troca.</p>
+    </div>
+
+    <div class="form-wrap rv d1" style="margin-top:2.4rem">
+      <form id="form-inscricao" novalidate autocomplete="on">
+        <div class="hp" aria-hidden="true">
+          <label for="apelido">Não preencha este campo</label>
+          <input type="text" id="apelido" name="apelido" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="fgrid">
+          <div class="field full">
+            <label for="nome">Nome completo <span class="req">*</span></label>
+            <input type="text" id="nome" name="nome" autocomplete="name" required placeholder="Seu nome como consta no documento">
+            <span class="err-msg">Informe seu nome completo.</span>
+          </div>
+
+          <div class="field">
+            <label for="email">E-mail <span class="req">*</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" required placeholder="voce@email.com">
+            <span class="err-msg">Informe um e-mail válido.</span>
+          </div>
+
+          <div class="field">
+            <label for="whatsapp">WhatsApp <span class="req">*</span></label>
+            <input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel" required placeholder="(85) 90000-0000">
+            <span class="err-msg">Informe um telefone para contato.</span>
+          </div>
+
+          <div class="field">
+            <label for="nascimento">Data de nascimento <span class="req">*</span></label>
+            <input type="date" id="nascimento" name="nascimento" required>
+            <span class="hint" id="idade-hint">Usada apenas para aplicar a regra de acompanhamento de menores.</span>
+            <span class="err-msg">Informe sua data de nascimento.</span>
+          </div>
+
+          <div class="field">
+            <label for="vinculo">Vínculo <span class="req">*</span></label>
+            <select id="vinculo" name="vinculo" required>
+              <option value="">Selecione…</option>
+              <option>Estudante do IFCE Campus Horizonte</option>
+              <option>Estudante de outro campus do IFCE</option>
+              <option>Servidor(a) do IFCE</option>
+              <option>Comunidade externa</option>
+            </select>
+            <span class="err-msg">Selecione seu vínculo.</span>
+          </div>
+
+          <div class="field full">
+            <label>Do que você quer participar? <span class="req">*</span></label>
+            <div class="opts" id="modalidades">
+              <label class="opt"><input type="checkbox" name="modalidade" value="Torneio TCG Live"><span><b>Torneio no TCG Live</b><small>Nos computadores do laboratório</small></span></label>
+              <label class="opt"><input type="checkbox" name="modalidade" value="Liga casual (cartas físicas)"><span><b>Liga com cartas físicas</b><small>Levo meu próprio baralho</small></span></label>
+              <label class="opt"><input type="checkbox" name="modalidade" value="Oficina Aprenda a jogar"><span><b>Oficina Aprenda a jogar</b><small>Nunca joguei / quero aprender</small></span></label>
+              <label class="opt"><input type="checkbox" name="modalidade" value="Troca de cartas"><span><b>Troca de cartas</b><small>Vou levar meu binder</small></span></label>
+            </div>
+            <span class="err-msg">Escolha pelo menos uma atividade.</span>
+          </div>
+
+          <div class="field">
+            <label for="nick">Nick no Pokémon TCG Live</label>
+            <input type="text" id="nick" name="nick" placeholder="Ex.: Treinador#1234">
+            <span class="hint">Necessário para o torneio. Deixe em branco se ainda não tem conta.</span>
+          </div>
+
+          <div class="field">
+            <label for="experiencia">Sua experiência com o jogo <span class="req">*</span></label>
+            <select id="experiencia" name="experiencia" required>
+              <option value="">Selecione…</option>
+              <option>Nunca joguei</option>
+              <option>Já joguei pouquíssimas vezes</option>
+              <option>Jogo casualmente</option>
+              <option>Jogo com frequência / competitivo</option>
+            </select>
+            <span class="err-msg">Selecione uma opção.</span>
+          </div>
+
+          <div class="guard" id="guard">
+            <p class="gtitle">👨‍👩‍👧 Você tem menos de 16 anos — os dados do responsável são obrigatórios</p>
+            <div class="field">
+              <label for="resp_nome">Nome do responsável <span class="req">*</span></label>
+              <input type="text" id="resp_nome" name="resp_nome" placeholder="Nome completo do responsável">
+              <span class="err-msg">Informe o nome do responsável.</span>
+            </div>
+            <div class="field">
+              <label for="resp_contato">Telefone do responsável <span class="req">*</span></label>
+              <input type="tel" id="resp_contato" name="resp_contato" placeholder="(85) 90000-0000">
+              <span class="err-msg">Informe o telefone do responsável.</span>
+            </div>
+            <p class="gtitle" style="font-weight:600;color:var(--ink-soft);font-size:.85rem">O responsável deve permanecer no campus durante todo o evento e assinar a autorização na recepção.</p>
+          </div>
+
+          <div class="field full">
+            <label for="obs">Observações (opcional)</label>
+            <textarea id="obs" name="obs" placeholder="Alguma dúvida, necessidade de acessibilidade ou informação que devemos saber?"></textarea>
+          </div>
+
+          <div class="field full">
+            <label class="opt" style="align-items:center"><input type="checkbox" id="aceite" name="aceite" required><span><b>Li e aceito o regulamento do evento <span class="req">*</span></b><small>Leia a íntegra na seção <a href="#regulamento">Regulamento</a> desta página.</small></span></label>
+            <span class="err-msg">É necessário aceitar o regulamento.</span>
+          </div>
+
+          <div class="field full">
+            <label class="opt" style="align-items:center"><input type="checkbox" id="imagem" name="imagem"><span><b>Autorizo o uso da minha imagem</b><small>Fotos e vídeos do evento para divulgação institucional do IFCE. Opcional.</small></span></label>
+          </div>
+
+          <div class="field full">
+            <label class="opt" style="align-items:center"><input type="checkbox" id="lgpd" name="lgpd" required><span><b>Concordo com o tratamento dos meus dados para organizar o evento <span class="req">*</span></b><small>Nome, contato e data de nascimento são usados apenas para o credenciamento, os pareamentos e a regra de acompanhamento de menores.</small></span></label>
+            <span class="err-msg">É necessário concordar para concluir a inscrição.</span>
+          </div>
+        </div>
+
+        <div class="form-foot">
+          <span class="status" id="status-inscricao" role="status" aria-live="polite"></span>
+          <button class="btn btn-primary" id="btn-inscricao" type="submit">Confirmar inscrição ⚡</button>
+        </div>
+      </form>
+
+      <p class="privacy" id="aviso-privacidade">
+        <strong>Aviso de privacidade.</strong> Os dados informados neste formulário são tratados pela organização do evento,
+        no IFCE Campus Horizonte, com a única finalidade de organizar o IFCE Challenge: credenciamento, formação dos pareamentos,
+        comunicação com os participantes e verificação da regra de acompanhamento de menores de 16 anos. Ficam guardados em
+        planilha de acesso restrito à organização e são <strong>eliminados em até 30 dias após o evento</strong>. Não são
+        vendidos, publicados nem compartilhados com terceiros. A qualquer momento você pode pedir acesso, correção ou exclusão
+        dos seus dados pelo formulário de dúvidas desta página, conforme a Lei nº 13.709/2018 (LGPD).
+      </p>
+
+      <div class="success" id="success-inscricao">
+        <div class="big">✓</div>
+        <h3>Inscrição confirmada!</h3>
+        <p class="lead" style="margin-inline:auto">Nos vemos no <strong>sábado, 19/09, às 9h</strong>, no Laboratório de Informática 2. Chegue com alguns minutos de antecedência: o check-in fecha às 9h10.</p>
+        <p><button class="btn btn-ghost" type="button" id="nova-inscricao">Inscrever outra pessoa</button></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REGULAMENTO ================= -->
+<section id="regulamento">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Leitura detalhada</span>
+      <h2>Regulamento <span class="gradtext">completo</span></h2>
+      <p class="lead">Todas as regras do evento, do formato das rodadas às normas de convivência no campus. Ao se inscrever, você concorda com o regulamento integral.</p>
+    </div>
+
+    <div class="reg-tools rv d1">
+      <div class="search"><input type="text" id="reg-search" placeholder="Buscar no regulamento… (ex.: menores, troca, W.O.)" aria-label="Buscar no regulamento"></div>
+      <button class="btn btn-ghost" type="button" id="toggle-all">Abrir tudo</button>
+      <button class="btn btn-ghost" type="button" onclick="window.print()">Imprimir</button>
+    </div>
+
+    <div id="reg-list" class="rv d2">
+<details class="acc" data-text="1. ℹ️ Sobre o evento O IFCE Challenge é um encontro de um dia dedicado ao Pokémon TCG, aberto a jogadores experientes e, principalmente, a quem nunca jogou. A programação reúne um torneio no Pokémon TCG Live , usando os computadores do laboratório, uma liga casual com cartas físicas , um espaço livre para troca de cartas e um momento de ensino das regras básicas para iniciantes. O evento não tem fins lucrativos : não há taxa de inscrição, não há premiação em dinheiro, crédito ou produtos, e nenhuma atividade do evento envolve pagamento de qualquer natureza. "><summary>1. ℹ️ Sobre o evento</summary><div class="acc-body"><p>O IFCE Challenge é um encontro de um dia dedicado ao Pokémon TCG, aberto a jogadores experientes e, principalmente, a quem nunca jogou. A programação reúne <strong>um torneio no Pokémon TCG Live</strong>, usando os computadores do laboratório, <strong>uma liga casual com cartas físicas</strong>, <strong>um espaço livre para troca de cartas</strong> e <strong>um momento de ensino das regras básicas</strong> para iniciantes.</p>
+<p>O evento <strong>não tem fins lucrativos</strong>: não há taxa de inscrição, não há premiação em dinheiro, crédito ou produtos, e nenhuma atividade do evento envolve pagamento de qualquer natureza.</p></div></details>
+<details class="acc" data-text="2. 🎟️ Inscrições A inscrição é gratuita e deve ser feita pelo formulário da página oficial do evento . No formulário, o participante indica em qual(is) modalidade(s) quer jogar: TCG Live , cartas físicas ou apenas oficina / troca de cartas . As vagas do torneio de TCG Live são limitadas ao número de computadores disponíveis no laboratório . Havendo mais inscritos que máquinas, será formada lista de espera por ordem de inscrição. Não é necessário check-in por rodada , mas é obrigatório o check-in único na recepção , realizado das 9h às 9h10 . Quem não fizer o check-in nesse intervalo não entra no pareamento da primeira rodada . O evento tem duração fixa de 2 horas (9h às 11h). A pontualidade é essencial: as rodadas começam no horário previsto, com ou sem todos os jogadores na mesa, e o encerramento às 11h é improrrogável. Participar apenas da oficina, do espaço de troca ou assistir às partidas também requer inscrição , para controle de acesso ao campus. "><summary>2. 🎟️ Inscrições</summary><div class="acc-body"><ul>
+<li>A inscrição é <strong>gratuita</strong> e deve ser feita pelo <strong>formulário da página oficial do evento</strong>.</li>
+<li>No formulário, o participante indica em qual(is) modalidade(s) quer jogar: <strong>TCG Live</strong>, <strong>cartas físicas</strong> ou <strong>apenas oficina / troca de cartas</strong>.</li>
+<li>As vagas do torneio de TCG Live são <strong>limitadas ao número de computadores disponíveis no laboratório</strong>. Havendo mais inscritos que máquinas, será formada lista de espera por ordem de inscrição.</li>
+<li><strong>Não é necessário check-in por rodada</strong>, mas é obrigatório o <strong>check-in único na recepção</strong>, realizado das <strong>9h às 9h10</strong>. Quem não fizer o check-in nesse intervalo <strong>não entra no pareamento da primeira rodada</strong>.</li>
+<li><strong>O evento tem duração fixa de 2 horas (9h às 11h).</strong> A pontualidade é essencial: as rodadas começam no horário previsto, com ou sem todos os jogadores na mesa, e o encerramento às 11h é improrrogável.</li>
+<li>Participar apenas da oficina, do espaço de troca ou assistir às partidas <strong>também requer inscrição</strong>, para controle de acesso ao campus.</li>
+</ul></div></details>
+<details class="acc" data-text="3. 👨‍👩‍👧 Participação de menores de 16 anos Participantes com menos de 16 anos de idade só podem permanecer no evento acompanhados de pai, mãe ou responsável legal , que deve estar presente no campus durante toda a permanência do menor. O responsável deve assinar a autorização de participação na recepção, apresentando documento de identificação com foto. A organização não assume a guarda de participantes menores de idade e não autoriza a saída de menores do campus desacompanhados. Participantes de 16 e 17 anos podem participar desacompanhados, mediante autorização assinada pelo responsável , entregue na recepção. "><summary>3. 👨‍👩‍👧 Participação de menores de 16 anos</summary><div class="acc-body"><ul>
+<li>Participantes com <strong>menos de 16 anos de idade só podem permanecer no evento acompanhados de pai, mãe ou responsável legal</strong>, que deve estar presente no campus durante toda a permanência do menor.</li>
+<li>O responsável deve <strong>assinar a autorização de participação</strong> na recepção, apresentando documento de identificação com foto.</li>
+<li>A organização <strong>não assume a guarda</strong> de participantes menores de idade e não autoriza a saída de menores do campus desacompanhados.</li>
+<li>Participantes de 16 e 17 anos podem participar desacompanhados, <strong>mediante autorização assinada pelo responsável</strong>, entregue na recepção.</li>
+</ul></div></details>
+<details class="acc" data-text="4. 🚫 Premiação Não haverá premiação , em nenhuma modalidade. Não serão distribuídos dinheiro, créditos, cartas, produtos ou brindes vinculados ao desempenho nas partidas. O resultado final tem caráter simbólico : os classificados são anunciados no encerramento e a classificação completa é publicada nos canais do evento. "><summary>4. 🚫 Premiação</summary><div class="acc-body"><p><strong>Não haverá premiação</strong>, em nenhuma modalidade.</p>
+<p>Não serão distribuídos dinheiro, créditos, cartas, produtos ou brindes vinculados ao desempenho nas partidas. O resultado final tem caráter <strong>simbólico</strong>: os classificados são anunciados no encerramento e a classificação completa é publicada nos canais do evento.</p></div></details>
+<details class="acc" data-text="5. 📅 Cronograma do sábado O evento ocorre em um único bloco de 9h às 11h . A oficina e o espaço de troca de cartas funcionam em paralelo às rodadas, para que ninguém fique parado. Horário Atividade 09h00 – 09h10 Credenciamento e check-in · abertura do espaço de troca de cartas 09h10 – 09h20 Abertura oficial, explicação do regulamento e divulgação dos pareamentos 09h20 – 09h50 🖥️ 1ª rodada (TCG Live) · 🃏 1ª rodada (cartas físicas) · 🎓 oficina &quot;Aprenda a jogar&quot; 09h50 – 10h20 🖥️ 2ª rodada · 🃏 2ª rodada · 🔁 troca de cartas e partidas livres 10h20 – 10h50 🖥️ 3ª rodada · 🃏 3ª rodada · 🔁 troca de cartas e partidas livres 10h50 – 11h00 Apuração, anúncio da classificação, encerramento e organização do espaço Com duas horas de evento, não há intervalo formal entre as rodadas nem fase de mata-mata . O tempo entre uma rodada e outra é apenas o necessário para a divulgação do novo pareamento. A organização pode ajustar o cronograma no dia conforme o número de participantes — por exemplo, reduzir as rodadas para 20 minutos se o número de inscritos exigir uma rodada a mais. As alterações são anunciadas presencialmente e valem para todos. "><summary>5. 📅 Cronograma do sábado</summary><div class="acc-body"><p>O evento ocorre em <strong>um único bloco de 9h às 11h</strong>. A oficina e o espaço de troca de cartas funcionam <strong>em paralelo</strong> às rodadas, para que ninguém fique parado.</p>
+<div class="tblscroll"><table>
+<thead>
+<tr>
+<th>Horário</th>
+<th>Atividade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>09h00 – 09h10</strong></td>
+<td>Credenciamento e check-in · abertura do espaço de troca de cartas</td>
+</tr>
+<tr>
+<td><strong>09h10 – 09h20</strong></td>
+<td>Abertura oficial, explicação do regulamento e divulgação dos pareamentos</td>
+</tr>
+<tr>
+<td><strong>09h20 – 09h50</strong></td>
+<td>🖥️ 1ª rodada (TCG Live) · 🃏 1ª rodada (cartas físicas) · 🎓 <strong>oficina "Aprenda a jogar"</strong></td>
+</tr>
+<tr>
+<td><strong>09h50 – 10h20</strong></td>
+<td>🖥️ 2ª rodada · 🃏 2ª rodada · 🔁 troca de cartas e partidas livres</td>
+</tr>
+<tr>
+<td><strong>10h20 – 10h50</strong></td>
+<td>🖥️ 3ª rodada · 🃏 3ª rodada · 🔁 troca de cartas e partidas livres</td>
+</tr>
+<tr>
+<td><strong>10h50 – 11h00</strong></td>
+<td>Apuração, anúncio da classificação, encerramento e organização do espaço</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>Com <strong>duas horas de evento, não há intervalo formal entre as rodadas nem fase de mata-mata</strong>. O tempo entre uma rodada e outra é apenas o necessário para a divulgação do novo pareamento.</p>
+<p>A organização pode ajustar o cronograma no dia conforme o número de participantes — por exemplo, reduzir as rodadas para 20 minutos se o número de inscritos exigir uma rodada a mais. As alterações são anunciadas presencialmente e valem para todos.</p>
+</blockquote></div></details>
+<details class="acc" data-text="6. 🖥️ Modalidade 1 — Torneio Pokémon TCG Live (laboratório) Torneio principal do evento, jogado presencialmente nos computadores do laboratório , usando o cliente Pokémon TCG Live . Os pareamentos, o cronômetro e a contagem de pontos ficam a cargo da mesa da organização , que usa a plataforma Slowpo.ke e divulga os confrontos de cada rodada em projeção ou quadro na sala. 6.1 📝 Formato ✅ Jogos Md1 (melhor de 1) ✅ Formato Padrão (Standard) ✅ Partidas em sequência, todas no mesmo dia ✅ Rodadas de 30 minutos ✅ Sem check-in por rodada ✅ Somente fase suíça — 3 rodadas, sem mata-mata (não há tempo hábil dentro das 2 horas de evento) 6.2 📌 Rodadas e classificação O torneio tem 3 rodadas suíças de 30 minutos , independentemente do número de jogadores, para caber na janela de 9h às 11h: Rodada Horário 1ª rodada 09h20 – 09h50 2ª rodada 09h50 – 10h20 3ª rodada 10h20 – 10h50 Não há fase de mata-mata. A classificação final é a da fase suíça, apurada ao término da 3ª rodada. Mínimo de 4 jogadores para que o torneio aconteça. Abaixo disso, a atividade vira sessão livre de partidas amistosas no TCG Live. Havendo mais de 16 jogadores, a organização pode reduzir as rodadas para 20 minutos e realizar uma 4ª rodada, desde que o encerramento às 11h seja preservado. A decisão é anunciada na abertura. 6.3 💻 Uso dos computadores do laboratório Cada jogador usa uma máquina indicada pela organização e joga com a própria conta do Pokémon TCG Live. Traga seu login e senha — a organização não recupera contas nem cria contas no dia. Recomenda-se acessar a conta e conferir o deck com antecedência , em casa. Problemas de login não suspendem o relógio da rodada. É proibido instalar programas, alterar configurações do sistema, acessar sites não relacionados ao evento ou usar a máquina para qualquer finalidade estranha ao torneio. Não é permitido comer ou beber junto aos equipamentos. Ao final, o jogador deve encerrar a sessão da sua conta na máquina utilizada. Danos causados por uso indevido dos equipamentos são de responsabilidade do participante, na forma das normas do campus. 6.4 🕹️ Condução das partidas Não é preciso enviar lista de deck. Basta ter um deck montado dentro do Pokémon TCG Live, legal no formato Padrão. Você pode trocar de deck entre as rodadas. Os jogadores estão todos na mesma sala : o pareamento é divulgado pela organização e o contato com o adversário é presencial — encontre sua mesa e combine a partida diretamente. A partida é aberta dentro do Pokémon TCG Live por meio de desafio direto entre os jogadores ( Battle → Versus → Match with a friend ), usando o nick informado no check-in. Fiquem atentos ao cronômetro da rodada , exibido pela organização. Configure a partida considerando o tempo restante . O resultado deve ser informado na mesa da organização assim que a partida terminar , sendo obrigatório o report pelo vencedor . É obrigatório conferir o resultado registrado na tabela da rodada. A organização não se responsabiliza por resultados informados incorretamente. O início de cada partida é decidido na moeda , dentro do jogo. 6.5 ⏱️ W.O. e estouro de tempo Se o adversário não se apresentar em até 10 minutos após o início da rodada, o jogador presente deve chamar o juiz para aplicação de W.O. Se o jogador ausente chegar depois do W.O. aplicado, fica a critério de quem solicitou aceitar ou não jogar a partida. Não aceitando, o W.O. é mantido. Se ambos os jogadores estiverem ausentes por mais de 10 minutos após a liberação da rodada, é aplicada dupla derrota . Se o tempo da rodada se esgotar e a partida não tiver sido concluída porque um dos jogadores demorou a se apresentar, a vitória é de quem tinha mais tempo disponível — ou seja, de quem chegou primeiro à mesa. Essa regra se aplica apenas quando o segundo jogador demorou mais de 4 minutos para se apresentar. "><summary>6. 🖥️ Modalidade 1 — Torneio Pokémon TCG Live (laboratório)</summary><div class="acc-body"><p>Torneio principal do evento, jogado <strong>presencialmente nos computadores do laboratório</strong>, usando o cliente <strong>Pokémon TCG Live</strong>. Os <strong>pareamentos, o cronômetro e a contagem de pontos</strong> ficam a cargo da <strong>mesa da organização</strong>, que usa a plataforma <strong>Slowpo.ke</strong> e divulga os confrontos de cada rodada em projeção ou quadro na sala.</p>
+<h3>6.1 📝 Formato</h3>
+<ul>
+<li>✅ Jogos <strong>Md1</strong> (melhor de 1)</li>
+<li>✅ <strong>Formato Padrão (Standard)</strong></li>
+<li>✅ Partidas em sequência, <strong>todas no mesmo dia</strong></li>
+<li>✅ Rodadas de <strong>30 minutos</strong></li>
+<li>✅ Sem check-in por rodada</li>
+<li>✅ <strong>Somente fase suíça</strong> — 3 rodadas, <strong>sem mata-mata</strong> (não há tempo hábil dentro das 2 horas de evento)</li>
+</ul>
+<h3>6.2 📌 Rodadas e classificação</h3>
+<p>O torneio tem <strong>3 rodadas suíças de 30 minutos</strong>, independentemente do número de jogadores, para caber na janela de 9h às 11h:</p>
+<div class="tblscroll"><table>
+<thead>
+<tr>
+<th>Rodada</th>
+<th>Horário</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1ª rodada</td>
+<td>09h20 – 09h50</td>
+</tr>
+<tr>
+<td>2ª rodada</td>
+<td>09h50 – 10h20</td>
+</tr>
+<tr>
+<td>3ª rodada</td>
+<td>10h20 – 10h50</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>Não há fase de mata-mata.</strong> A classificação final é a da fase suíça, apurada ao término da 3ª rodada.</li>
+<li><strong>Mínimo de 4 jogadores</strong> para que o torneio aconteça. Abaixo disso, a atividade vira <strong>sessão livre de partidas amistosas</strong> no TCG Live.</li>
+<li>Havendo mais de 16 jogadores, a organização pode <strong>reduzir as rodadas para 20 minutos</strong> e realizar uma 4ª rodada, desde que o encerramento às 11h seja preservado. A decisão é anunciada na abertura.</li>
+</ul>
+<h3>6.3 💻 Uso dos computadores do laboratório</h3>
+<ul>
+<li>Cada jogador usa <strong>uma máquina indicada pela organização</strong> e joga com a <strong>própria conta</strong> do Pokémon TCG Live. <strong>Traga seu login e senha</strong> — a organização não recupera contas nem cria contas no dia.</li>
+<li>Recomenda-se <strong>acessar a conta e conferir o deck com antecedência</strong>, em casa. Problemas de login não suspendem o relógio da rodada.</li>
+<li>É <strong>proibido</strong> instalar programas, alterar configurações do sistema, acessar sites não relacionados ao evento ou usar a máquina para qualquer finalidade estranha ao torneio.</li>
+<li><strong>Não é permitido comer ou beber</strong> junto aos equipamentos.</li>
+<li>Ao final, o jogador deve <strong>encerrar a sessão da sua conta</strong> na máquina utilizada.</li>
+<li>Danos causados por uso indevido dos equipamentos são de responsabilidade do participante, na forma das normas do campus.</li>
+</ul>
+<h3>6.4 🕹️ Condução das partidas</h3>
+<ul>
+<li><strong>Não é preciso enviar lista de deck.</strong> Basta ter um deck montado dentro do Pokémon TCG Live, legal no formato Padrão. Você pode trocar de deck entre as rodadas.</li>
+<li>Os jogadores estão <strong>todos na mesma sala</strong>: o pareamento é divulgado pela organização e <strong>o contato com o adversário é presencial</strong> — encontre sua mesa e combine a partida diretamente.</li>
+<li>A partida é aberta dentro do Pokémon TCG Live por meio de <strong>desafio direto entre os jogadores</strong> (<em>Battle → Versus → Match with a friend</em>), usando o nick informado no check-in.</li>
+<li>Fiquem atentos ao <strong>cronômetro da rodada</strong>, exibido pela organização. Configure a partida <strong>considerando o tempo restante</strong>.</li>
+<li><strong>O resultado deve ser informado na mesa da organização assim que a partida terminar</strong>, sendo obrigatório o report pelo <strong>vencedor</strong>.</li>
+<li><strong>É obrigatório conferir o resultado registrado</strong> na tabela da rodada. A organização não se responsabiliza por resultados informados incorretamente.</li>
+<li>O início de cada partida é decidido <strong>na moeda</strong>, dentro do jogo.</li>
+</ul>
+<h3>6.5 ⏱️ W.O. e estouro de tempo</h3>
+<ul>
+<li>Se o adversário <strong>não se apresentar em até 10 minutos</strong> após o início da rodada, o jogador presente deve <strong>chamar o juiz</strong> para aplicação de W.O.</li>
+<li>Se o jogador ausente chegar depois do W.O. aplicado, <strong>fica a critério de quem solicitou</strong> aceitar ou não jogar a partida. Não aceitando, o W.O. é mantido.</li>
+<li>Se <strong>ambos os jogadores</strong> estiverem ausentes por mais de 10 minutos após a liberação da rodada, é aplicada <strong>dupla derrota</strong>.</li>
+<li>Se o <strong>tempo da rodada se esgotar</strong> e a partida não tiver sido concluída porque um dos jogadores demorou a se apresentar, a vitória é de quem tinha mais tempo disponível — ou seja, de quem chegou primeiro à mesa. Essa regra se aplica <strong>apenas quando o segundo jogador demorou mais de 4 minutos</strong> para se apresentar.</li>
+</ul></div></details>
+<details class="acc" data-text="7. 🃏 Modalidade 2 — Liga casual com cartas físicas Modalidade voltada a quem traz o próprio baralho físico . A liga acontece se houver no mínimo 4 jogadores com baralho físico presentes no check-in. Com menos de 4, os jogadores são convidados a jogar partidas livres no espaço reservado, sem pareamento oficial. Formato: suíço em Md1 , rodadas de 30 minutos, no formato Padrão (Standard) . Os pareamentos e a classificação são gerenciados pela plataforma Slowpo.ke . Os jogadores devem informar seu nome/identificador no check-in para serem incluídos no pareamento. São 3 rodadas de 30 minutos , nos mesmos horários do torneio de TCG Live (item 6.2). A liga é casual, não tem mata-mata e encerra ao fim da 3ª rodada. Cada jogador é responsável pelo próprio material : baralho, sleeves, dados, marcadores, contador de dano e moeda. A organização não empresta cartas nem baralhos . O deck deve ser legal no formato Padrão e ter exatamente 60 cartas, com todas as cartas em sleeves opacos e idênticos, quando houver sleeves. Cartas proxy, impressas ou alteradas não são permitidas nas partidas da liga. O resultado de cada partida deve ser informado à mesa de organização assim que a rodada terminar. Ao término do tempo de rodada, aplica-se o procedimento usual de turnos extras : o jogo em andamento termina com mais 3 turnos; persistindo o empate, a partida é registrada como empate. "><summary>7. 🃏 Modalidade 2 — Liga casual com cartas físicas</summary><div class="acc-body"><p>Modalidade voltada a quem traz o <strong>próprio baralho físico</strong>.</p>
+<ul>
+<li>A liga acontece <strong>se houver no mínimo 4 jogadores com baralho físico</strong> presentes no check-in. Com menos de 4, os jogadores são convidados a jogar <strong>partidas livres</strong> no espaço reservado, sem pareamento oficial.</li>
+<li><strong>Formato: suíço em Md1</strong>, rodadas de 30 minutos, no formato <strong>Padrão (Standard)</strong>.</li>
+<li>Os <strong>pareamentos e a classificação</strong> são gerenciados pela plataforma <strong>Slowpo.ke</strong>. Os jogadores devem informar seu nome/identificador no check-in para serem incluídos no pareamento.</li>
+<li>São <strong>3 rodadas de 30 minutos</strong>, nos mesmos horários do torneio de TCG Live (item 6.2). A liga é casual, <strong>não tem mata-mata</strong> e encerra ao fim da 3ª rodada.</li>
+<li><strong>Cada jogador é responsável pelo próprio material</strong>: baralho, sleeves, dados, marcadores, contador de dano e moeda. A organização <strong>não empresta cartas nem baralhos</strong>.</li>
+<li>O deck deve ser <strong>legal no formato Padrão</strong> e ter exatamente 60 cartas, com todas as cartas em sleeves opacos e idênticos, quando houver sleeves.</li>
+<li><strong>Cartas proxy, impressas ou alteradas não são permitidas</strong> nas partidas da liga.</li>
+<li>O resultado de cada partida deve ser informado à mesa de organização assim que a rodada terminar.</li>
+<li>Ao término do tempo de rodada, aplica-se o procedimento usual de <strong>turnos extras</strong>: o jogo em andamento termina com mais 3 turnos; persistindo o empate, a partida é registrada como empate.</li>
+</ul></div></details>
+<details class="acc" data-text="8. 🔁 Espaço de troca de cartas Área livre, aberta durante todo o evento, para quem quiser trocar cartas com outros participantes. As trocas são voluntárias e de responsabilidade exclusiva dos participantes envolvidos . A organização não intermedeia, não avalia cartas e não se responsabiliza por trocas consideradas injustas, por arrependimento posterior ou por extravio de material. Não é permitida a compra e venda de cartas, acessórios ou qualquer produto dentro do evento — não há atividade comercial no campus. O espaço é exclusivamente para troca . Participantes menores de 16 anos só podem realizar trocas na presença do seu responsável. A organização pode desfazer uma troca feita por menor desacompanhado. Recomenda-se identificar suas cartas e binders e não deixar material sem supervisão . A organização não se responsabiliza por perdas ou furtos. Situações de conflito devem ser comunicadas imediatamente à organização, que pode encerrar a troca e, se necessário, afastar os envolvidos do espaço. "><summary>8. 🔁 Espaço de troca de cartas</summary><div class="acc-body"><p>Área livre, aberta durante todo o evento, para quem quiser trocar cartas com outros participantes.</p>
+<ul>
+<li>As trocas são <strong>voluntárias e de responsabilidade exclusiva dos participantes envolvidos</strong>. A organização <strong>não intermedeia, não avalia cartas e não se responsabiliza</strong> por trocas consideradas injustas, por arrependimento posterior ou por extravio de material.</li>
+<li><strong>Não é permitida a compra e venda</strong> de cartas, acessórios ou qualquer produto dentro do evento — não há atividade comercial no campus. O espaço é <strong>exclusivamente para troca</strong>.</li>
+<li><strong>Participantes menores de 16 anos só podem realizar trocas na presença do seu responsável.</strong> A organização pode desfazer uma troca feita por menor desacompanhado.</li>
+<li>Recomenda-se <strong>identificar suas cartas e binders</strong> e <strong>não deixar material sem supervisão</strong>. A organização não se responsabiliza por perdas ou furtos.</li>
+<li>Situações de conflito devem ser comunicadas imediatamente à organização, que pode encerrar a troca e, se necessário, afastar os envolvidos do espaço.</li>
+</ul></div></details>
+<details class="acc" data-text="9. 🎓 Momento &quot;Aprenda a jogar&quot; Oficina aberta para quem nunca jogou Pokémon TCG ou quer relembrar as regras. A oficina é feita inteiramente no Pokémon TCG Live , nos computadores do laboratório. Não é preciso levar cartas nem ter baralho. Não há baralhos físicos de demonstração no evento: todo o aprendizado acontece no jogo digital, que já disponibiliza decks iniciais gratuitos a cada nova conta. Traga sua conta pronta. Quem ainda não tem deve criar uma conta gratuita do Pokémon Trainer Club e instalar/acessar o Pokémon TCG Live antes do evento — criar conta no dia consome quase todo o tempo da oficina. Conteúdo: navegação básica do TCG Live, montagem da mesa, fases do turno, tipos de carta (Pokémon, Treinador e Energia), condições de vitória, prêmios e noções de construção de deck. A oficina combina a explicação guiada pelos monitores com o tutorial do próprio jogo e termina em partidas acompanhadas , sem valer classificação. A oficina acontece em paralelo à 1ª rodada (09h20 – 09h50) , em turma única, usando máquinas reservadas pela organização para essa finalidade. Havendo procura e computadores livres, os monitores repetem a oficina durante a 2ª rodada. Participantes da oficina podem, no mesmo dia, continuar jogando partidas livres no TCG Live , havendo computadores disponíveis. "><summary>9. 🎓 Momento "Aprenda a jogar"</summary><div class="acc-body"><p>Oficina aberta para quem <strong>nunca jogou Pokémon TCG</strong> ou quer relembrar as regras. A oficina é feita <strong>inteiramente no Pokémon TCG Live</strong>, nos computadores do laboratório.</p>
+<ul>
+<li><strong>Não é preciso levar cartas nem ter baralho.</strong> Não há baralhos físicos de demonstração no evento: todo o aprendizado acontece no jogo digital, que já disponibiliza <strong>decks iniciais gratuitos</strong> a cada nova conta.</li>
+<li><strong>Traga sua conta pronta.</strong> Quem ainda não tem deve criar uma <strong>conta gratuita do Pokémon Trainer Club</strong> e instalar/acessar o Pokémon TCG Live <strong>antes do evento</strong> — criar conta no dia consome quase todo o tempo da oficina.</li>
+<li>Conteúdo: navegação básica do TCG Live, montagem da mesa, fases do turno, tipos de carta (Pokémon, Treinador e Energia), condições de vitória, prêmios e noções de construção de deck.</li>
+<li>A oficina combina a <strong>explicação guiada pelos monitores</strong> com o <strong>tutorial do próprio jogo</strong> e termina em <strong>partidas acompanhadas</strong>, sem valer classificação.</li>
+<li>A oficina acontece <strong>em paralelo à 1ª rodada (09h20 – 09h50)</strong>, em turma única, usando <strong>máquinas reservadas pela organização</strong> para essa finalidade. Havendo procura e computadores livres, os monitores repetem a oficina durante a 2ª rodada.</li>
+<li>Participantes da oficina podem, no mesmo dia, <strong>continuar jogando partidas livres no TCG Live</strong>, havendo computadores disponíveis.</li>
+</ul></div></details>
+<details class="acc" data-text="10. 🎯 Vitória, empate, dupla derrota e pontuação 😁 Vitória Vence a partida quem ganhar 1 jogo dentro do Md1. No TCG Live, recomenda-se guardar um print da tela de vitória , contendo o nick dos dois jogadores, caso haja contestação do resultado informado. 😐 Empate Na fase suíça , os jogadores podem, em comum acordo, decidir pelo empate; ambos devem acionar o juiz para registro. Encerrado o tempo da rodada sem definição da partida, o resultado é registrado como empate para ambos, com o juiz ciente da ocorrência. ☹️ Dupla derrota Ausência dos dois jogadores por mais de 10 minutos após a liberação da rodada. Esgotamento do tempo sem conclusão da partida em razão de empate no primeiro confronto. 🎯 Pontuação (fase suíça) ✅ Vitória — 3 pontos ✅ Empate — 1 ponto ✅ Derrota — 0 pontos A classificação final é apurada ao término da 3ª rodada , pela soma dos pontos. O desempate segue os critérios padrão do sistema suíço, nesta ordem: pontos, opponents&#x27; win % e opponents&#x27; opponents&#x27; win % . "><summary>10. 🎯 Vitória, empate, dupla derrota e pontuação</summary><div class="acc-body"><h3>😁 Vitória</h3>
+<p>Vence a partida quem ganhar <strong>1 jogo</strong> dentro do Md1.</p>
+<p>No TCG Live, recomenda-se <strong>guardar um print da tela de vitória</strong>, contendo o nick dos dois jogadores, caso haja contestação do resultado informado.</p>
+<h3>😐 Empate</h3>
+<ul>
+<li>Na <strong>fase suíça</strong>, os jogadores podem, em comum acordo, decidir pelo empate; ambos devem acionar o juiz para registro.</li>
+<li>Encerrado o tempo da rodada sem definição da partida, o resultado é registrado como <strong>empate</strong> para ambos, com o juiz ciente da ocorrência.</li>
+</ul>
+<h3>☹️ Dupla derrota</h3>
+<ul>
+<li>Ausência dos dois jogadores por mais de 10 minutos após a liberação da rodada.</li>
+<li>Esgotamento do tempo sem conclusão da partida em razão de empate no primeiro confronto.</li>
+</ul>
+<h3>🎯 Pontuação (fase suíça)</h3>
+<ul>
+<li>✅ Vitória — <strong>3 pontos</strong></li>
+<li>✅ Empate — <strong>1 ponto</strong></li>
+<li>✅ Derrota — <strong>0 pontos</strong></li>
+</ul>
+<p>A classificação final é apurada <strong>ao término da 3ª rodada</strong>, pela soma dos pontos. O desempate segue os critérios padrão do sistema suíço, nesta ordem: pontos, <em>opponents' win %</em> e <em>opponents' opponents' win %</em>.</p></div></details>
+<details class="acc" data-text="11. 🫂 Fair play Interprete sempre o fair play em todas as partidas. O evento é de integração e aprendizado; o resultado é secundário. Jogadores experientes são incentivados a explicar jogadas a iniciantes fora do tempo de rodada, e a jogar com paciência durante as partidas. Encontrando bugs durante a partida no TCG Live, chame o juiz e, se possível, apresente evidência (print ou vídeo). O juiz decide entre reinício da partida ou manutenção do estado. Se o tempo do relógio se esgotar e a partida não for concluída por causa de um reinício, prevalece a decisão do juiz sobre o resultado. "><summary>11. 🫂 Fair play</summary><div class="acc-body"><ul>
+<li><strong>Interprete sempre o fair play em todas as partidas.</strong> O evento é de integração e aprendizado; o resultado é secundário.</li>
+<li>Jogadores experientes são incentivados a <strong>explicar jogadas a iniciantes</strong> fora do tempo de rodada, e a jogar com paciência durante as partidas.</li>
+<li>Encontrando <strong>bugs</strong> durante a partida no TCG Live, chame o juiz e, se possível, apresente evidência (print ou vídeo). O juiz decide entre reinício da partida ou manutenção do estado.</li>
+<li>Se o tempo do relógio se esgotar e a partida não for concluída por causa de um reinício, prevalece a decisão do juiz sobre o resultado.</li>
+</ul></div></details>
+<details class="acc" data-text="12. 😡 Condutas vedadas e punições São vedados, em qualquer modalidade: Slow play — atrasar intencionalmente as jogadas para esgotar o relógio. Uso de cartas ilegais no formato ou de proxies na modalidade de cartas físicas. Uso de auxílio externo durante a partida (consulta a terceiros ou a listas do adversário fora do permitido). Ofensas, discriminação, assédio ou qualquer forma de desrespeito a participantes, monitores, servidores ou público. Uso indevido dos equipamentos e das dependências do campus. Gradação das punições: 1ª ocorrência — advertência do juiz; quando aplicável, reinício da partida. 2ª ocorrência — derrota automática na partida. 3ª ocorrência — eliminação do evento. Condutas graves — especialmente discriminação, assédio, agressão, furto ou dano ao patrimônio — implicam afastamento imediato do evento , independentemente de gradação, com encaminhamento às instâncias competentes do IFCE. Casos de slow play comprovado com intenção de prejudicar o adversário implicam desclassificação imediata . "><summary>12. 😡 Condutas vedadas e punições</summary><div class="acc-body"><p>São vedados, em qualquer modalidade:</p>
+<ul>
+<li><strong>Slow play</strong> — atrasar intencionalmente as jogadas para esgotar o relógio.</li>
+<li>Uso de <strong>cartas ilegais no formato</strong> ou de proxies na modalidade de cartas físicas.</li>
+<li>Uso de <strong>auxílio externo</strong> durante a partida (consulta a terceiros ou a listas do adversário fora do permitido).</li>
+<li><strong>Ofensas, discriminação, assédio ou qualquer forma de desrespeito</strong> a participantes, monitores, servidores ou público.</li>
+<li>Uso indevido dos equipamentos e das dependências do campus.</li>
+</ul>
+<p><strong>Gradação das punições:</strong></p>
+<ol>
+<li><strong>1ª ocorrência</strong> — advertência do juiz; quando aplicável, reinício da partida.</li>
+<li><strong>2ª ocorrência</strong> — derrota automática na partida.</li>
+<li><strong>3ª ocorrência</strong> — eliminação do evento.</li>
+</ol>
+<p>Condutas graves — especialmente <strong>discriminação, assédio, agressão, furto ou dano ao patrimônio</strong> — implicam <strong>afastamento imediato do evento</strong>, independentemente de gradação, com encaminhamento às instâncias competentes do IFCE.</p>
+<p>Casos de <strong>slow play comprovado</strong> com intenção de prejudicar o adversário implicam <strong>desclassificação imediata</strong>.</p></div></details>
+<details class="acc" data-text="13. 🏫 Normas de convivência no campus O evento ocorre nas dependências do IFCE Campus Horizonte e todos os participantes estão sujeitos às normas internas do campus e ao Código de Ética do servidor e do estudante. Proibido o consumo de bebida alcoólica, o uso de cigarros ou similares e a entrada com qualquer substância ilícita. Alimentos e bebidas apenas nas áreas indicadas , nunca no laboratório. Mantenha o espaço limpo e devolva mesas e cadeiras ao lugar ao final. Ao se inscrever, o participante autoriza o registro de imagem em fotos e vídeos do evento para fins de divulgação institucional, podendo manifestar recusa na recepção. "><summary>13. 🏫 Normas de convivência no campus</summary><div class="acc-body"><ul>
+<li>O evento ocorre nas dependências do IFCE Campus Horizonte e todos os participantes estão sujeitos às <strong>normas internas do campus</strong> e ao Código de Ética do servidor e do estudante.</li>
+<li><strong>Proibido</strong> o consumo de bebida alcoólica, o uso de cigarros ou similares e a entrada com qualquer substância ilícita.</li>
+<li>Alimentos e bebidas <strong>apenas nas áreas indicadas</strong>, nunca no laboratório.</li>
+<li>Mantenha o espaço limpo e devolva mesas e cadeiras ao lugar ao final.</li>
+<li>Ao se inscrever, o participante <strong>autoriza o registro de imagem</strong> em fotos e vídeos do evento para fins de divulgação institucional, podendo manifestar recusa na recepção.</li>
+</ul></div></details>
+<details class="acc" data-text="14. 📱 Dúvidas e contato Dúvidas sobre regras devem ser sanadas antes do início das rodadas , com a organização ou pelos canais oficiais do evento. Depois do início, o juiz não interrompe a rodada para explicar regras já descritas neste regulamento. Durante o evento, procure a mesa da organização ou levante a mão para chamar um juiz. Antes do evento, as dúvidas podem ser enviadas pelo formulário de contato da página oficial do evento . "><summary>14. 📱 Dúvidas e contato</summary><div class="acc-body"><ul>
+<li><strong>Dúvidas sobre regras devem ser sanadas antes do início das rodadas</strong>, com a organização ou pelos canais oficiais do evento. Depois do início, o juiz não interrompe a rodada para explicar regras já descritas neste regulamento.</li>
+<li>Durante o evento, procure a <strong>mesa da organização</strong> ou levante a mão para chamar um juiz.</li>
+<li>Antes do evento, as dúvidas podem ser enviadas pelo <strong>formulário de contato da página oficial do evento</strong>.</li>
+</ul></div></details>
+<details class="acc" data-text="15. Disposições finais A inscrição no evento implica a aceitação integral deste regulamento . A organização pode ajustar cronograma, número e duração das rodadas e distribuição das máquinas conforme o número de participantes, comunicando as mudanças a todos, respeitando sempre o encerramento às 11h . Os casos omissos serão decididos pela organização do evento , em conjunto com a coordenação do curso, e suas decisões são finais. "><summary>15. Disposições finais</summary><div class="acc-body"><ul>
+<li>A inscrição no evento implica a <strong>aceitação integral deste regulamento</strong>.</li>
+<li>A organização pode ajustar cronograma, número e duração das rodadas e distribuição das máquinas conforme o número de participantes, comunicando as mudanças a todos, <strong>respeitando sempre o encerramento às 11h</strong>.</li>
+<li><strong>Os casos omissos serão decididos pela organização do evento</strong>, em conjunto com a coordenação do curso, e suas decisões são finais.</li>
+</ul></div></details>
+    </div>
+    <p class="no-hit" id="no-hit">Nenhum trecho do regulamento corresponde à sua busca.</p>
+  </div>
+</section>
+
+<!-- ================= DÚVIDAS ================= -->
+<section id="duvidas">
+  <div class="wrap">
+    <div class="split">
+      <div class="rv">
+        <span class="eyebrow">Fale com a organização</span>
+        <h2>Ficou alguma <span class="gradtext">dúvida?</span></h2>
+        <p class="lead">Dúvidas sobre regras devem ser resolvidas <strong>antes</strong> do início das rodadas — durante o evento o juiz não interrompe a rodada para explicar regras já descritas no regulamento. Mande sua pergunta por aqui.</p>
+      </div>
+      <div class="rv d2">
+        <div class="form-wrap">
+          <form id="form-duvida" novalidate>
+            <div class="hp" aria-hidden="true">
+              <label for="d_apelido">Não preencha este campo</label>
+              <input type="text" id="d_apelido" name="apelido" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="fgrid">
+              <div class="field full">
+                <label for="d_nome">Seu nome <span class="req">*</span></label>
+                <input type="text" id="d_nome" name="nome" required placeholder="Como podemos te chamar">
+                <span class="err-msg">Informe seu nome.</span>
+              </div>
+              <div class="field full">
+                <label for="d_email">E-mail para resposta <span class="req">*</span></label>
+                <input type="email" id="d_email" name="email" required placeholder="voce@email.com">
+                <span class="err-msg">Informe um e-mail válido.</span>
+              </div>
+              <div class="field full">
+                <label for="d_msg">Sua dúvida <span class="req">*</span></label>
+                <textarea id="d_msg" name="mensagem" required placeholder="Escreva sua pergunta"></textarea>
+                <span class="err-msg">Escreva sua dúvida.</span>
+              </div>
+            </div>
+            <div class="form-foot">
+              <span class="status" id="status-duvida" role="status" aria-live="polite"></span>
+              <button class="btn btn-blue" id="btn-duvida" type="submit">Enviar dúvida</button>
+            </div>
+          </form>
+          <div class="success" id="success-duvida">
+            <div class="big">✉</div>
+            <h3>Dúvida enviada!</h3>
+            <p class="lead" style="margin-inline:auto">A organização responde no e-mail informado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top" style="margin-bottom:.9rem"><span class="mark"><span>🏆</span></span> IFCE Challenge</a>
+        <span class="ifce-plate sm" style="margin:.2rem 0 1.1rem">
+          <img src="img/logo-ifce.png" alt="Instituto Federal do Ceará — IFCE"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <span class="ifce-fallback" style="display:none"><span class="sq">IFCE</span><span>Instituto Federal do Ceará<small>Campus Horizonte</small></span></span>
+        </span>
+        <p style="color:var(--ink-soft);font-size:.92rem;max-width:38ch">Campeonato de Pokémon TCG do IFCE Campus Horizonte. Evento gratuito, sem premiação, promovido com fins educativos, recreativos e de integração com a comunidade.</p>
+      </div>
+      <div>
+        <h4>O evento</h4>
+        <a href="#evento">Atividades</a>
+        <a href="#programacao">Programação</a>
+        <a href="#aprenda">Aprenda a jogar</a>
+        <a href="#regulamento">Regulamento</a>
+        <a href="#inscricao">Inscrição</a>
+        <a href="#duvidas">Dúvidas</a>
+      </div>
+      <div>
+        <h4>Quando e onde</h4>
+        <a href="#top">Sábado, 19/09/2026</a>
+        <a href="#top">9h às 11h</a>
+        <a href="#top">Laboratório de Informática 2</a>
+        <a href="#top">IFCE Campus Horizonte</a>
+        <a href="https://tcg.pokemon.com/pt-br/tcgl/" target="_blank" rel="noopener">Pokémon TCG Live ↗</a>
+      </div>
+    </div>
+    <div class="foot-note">
+      <span>© 2026 IFCE Campus Horizonte · Evento gratuito e sem fins lucrativos</span>
+      <span>Pokémon e Pokémon TCG Live são marcas de seus respectivos titulares. Evento independente, sem vínculo oficial.</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="totop" aria-label="Voltar ao topo">↑</button>
+<script>
+/* =========================================================
+   CONFIGURAÇÃO — cole aqui a URL do seu Web App do Apps Script
+   (Implantar ▸ Nova implantação ▸ App da Web ▸ Acesso: qualquer pessoa)
+   ========================================================= */
+const ABERTURA = Date.now();
+const APPS_SCRIPT_URL = "COLE_AQUI_A_URL_DO_SEU_WEB_APP";
+
+/* ---------- NAV ---------- */
+const nav = document.getElementById('nav');
+const onScroll = () => {
+  nav.classList.toggle('stuck', window.scrollY > 20);
+  document.getElementById('totop').classList.toggle('show', window.scrollY > 700);
+};
+window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+const burger = document.getElementById('burger'), navlinks = document.getElementById('navlinks');
+burger.addEventListener('click', () => {
+  const open = navlinks.classList.toggle('open');
+  burger.setAttribute('aria-expanded', open); burger.textContent = open ? '✕' : '☰';
+});
+navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navlinks.classList.remove('open'); burger.textContent = '☰'; burger.setAttribute('aria-expanded','false');
+}));
+document.getElementById('totop').addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+/* ---------- REVEAL ---------- */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, {threshold:.12, rootMargin:'0px 0px -40px'});
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+/* ---------- COUNTDOWN (19/09/2026 09:00, horário de Fortaleza UTC-3) ---------- */
+const TARGET = new Date('2026-09-19T09:00:00-03:00').getTime();
+const pad = n => String(n).padStart(2,'0');
+function tick(){
+  const diff = TARGET - Date.now();
+  const box = document.getElementById('countdown');
+  if (diff <= 0){
+    box.innerHTML = '<div class="cd live" style="flex:1 1 100%"><b>É HOJE!</b><span>Nos vemos no Laboratório 2</span></div>';
+    clearInterval(timer); return;
+  }
+  const d = Math.floor(diff/864e5), h = Math.floor(diff%864e5/36e5), m = Math.floor(diff%36e5/6e4), s = Math.floor(diff%6e4/1e3);
+  document.getElementById('cd-d').textContent = d;
+  document.getElementById('cd-h').textContent = pad(h);
+  document.getElementById('cd-m').textContent = pad(m);
+  document.getElementById('cd-s').textContent = pad(s);
+}
+const timer = setInterval(tick, 1000); tick();
+
+/* ---------- TIMELINE PROGRESS ---------- */
+const tl = document.getElementById('tl'), tlfill = document.getElementById('tlfill');
+const tlItems = [...document.querySelectorAll('.tl-item')];
+function tlScroll(){
+  if (!tl) return;
+  const r = tl.getBoundingClientRect(), vh = innerHeight;
+  const p = Math.min(1, Math.max(0, (vh*0.75 - r.top) / r.height));
+  tlfill.style.height = (p * r.height) + 'px';
+  tlItems.forEach(it => {
+    const ir = it.getBoundingClientRect();
+    it.classList.toggle('on', ir.top < vh*0.75);
+  });
+}
+window.addEventListener('scroll', tlScroll, {passive:true}); tlScroll();
+
+/* ---------- PARALLAX SUAVE NO HERO ---------- */
+const cards = [...document.querySelectorAll('.tcard')];
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && window.matchMedia('(pointer:fine)').matches){
+  document.querySelector('.hero').addEventListener('mousemove', e => {
+    const {width, height, left, top} = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - left) / width - .5, y = (e.clientY - top) / height - .5;
+    cards.forEach((c,i) => { const f = (i+1) * 5; c.style.translate = `${-x*f}px ${-y*f}px`; });
+  });
+}
+
+/* ---------- VÍDEO (facade) ---------- */
+const vshell = document.getElementById('video');
+function playVideo(){
+  vshell.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/rnpwuuchI40?autoplay=1&rel=0" title="Como jogar Pokémon Estampas Ilustradas" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+  vshell.style.cursor = 'default';
+}
+vshell.addEventListener('click', playVideo);
+vshell.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); playVideo(); } });
+
+/* ---------- ACORDEÃO: abrir tudo / busca ---------- */
+const accs = () => [...document.querySelectorAll('details.acc')];
+const toggleAll = document.getElementById('toggle-all');
+toggleAll.addEventListener('click', () => {
+  const anyClosed = accs().some(d => !d.open);
+  accs().forEach(d => d.open = anyClosed);
+  toggleAll.textContent = anyClosed ? 'Fechar tudo' : 'Abrir tudo';
+});
+
+const search = document.getElementById('reg-search'), noHit = document.getElementById('no-hit');
+let searchTimer;
+search.addEventListener('input', () => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => {
+    const q = search.value.trim().toLowerCase();
+    let hits = 0;
+    accs().forEach(d => {
+      const txt = (d.dataset.text || d.textContent).toLowerCase();
+      const match = !q || txt.includes(q);
+      d.style.display = match ? '' : 'none';
+      if (match) hits++;
+      if (q && match) d.open = true;
+      if (!q) d.open = false;
+    });
+    noHit.style.display = hits ? 'none' : 'block';
+    if (!q) toggleAll.textContent = 'Abrir tudo';
+  }, 160);
+});
+
+/* ---------- FORMULÁRIOS ---------- */
+document.querySelectorAll('.opt input').forEach(inp => {
+  const sync = () => inp.closest('.opt').classList.toggle('checked', inp.checked);
+  inp.addEventListener('change', sync); sync();
+});
+
+const nasc = document.getElementById('nascimento'), guard = document.getElementById('guard'), hint = document.getElementById('idade-hint');
+function idadeNoEvento(dateStr){
+  if (!dateStr) return null;
+  const b = new Date(dateStr + 'T00:00:00-03:00');
+  if (isNaN(b)) return null;
+  const ev = new Date('2026-09-19T00:00:00-03:00');
+  let age = ev.getFullYear() - b.getFullYear();
+  const m = ev.getMonth() - b.getMonth();
+  if (m < 0 || (m === 0 && ev.getDate() < b.getDate())) age--;
+  return age;
+}
+function checkIdade(){
+  const age = idadeNoEvento(nasc.value);
+  const menor = age !== null && age < 16;
+  guard.classList.toggle('show', menor);
+  if (age === null) { hint.textContent = 'Usada apenas para aplicar a regra de acompanhamento de menores.'; return; }
+  if (menor) hint.textContent = `${age} anos no dia do evento — presença do responsável obrigatória.`;
+  else if (age < 18) hint.textContent = `${age} anos no dia do evento — traga a autorização assinada pelo responsável.`;
+  else hint.textContent = `${age} anos no dia do evento.`;
+}
+nasc.addEventListener('change', checkIdade); nasc.addEventListener('input', checkIdade);
+
+function setErr(el, bad){
+  const f = el.closest('.field');
+  if (f) f.classList.toggle('invalid', bad);
+  el.classList.toggle('err', bad);
+}
+const isEmail = v => /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v.trim());
+
+function validaInscricao(){
+  let ok = true, first = null;
+  const need = (el, cond) => { const bad = !cond; setErr(el, bad); if (bad && !first) first = el; if (bad) ok = false; };
+  const g = id => document.getElementById(id);
+  need(g('nome'), g('nome').value.trim().length >= 5);
+  need(g('email'), isEmail(g('email').value));
+  need(g('whatsapp'), g('whatsapp').value.replace(/\D/g,'').length >= 10);
+  need(g('nascimento'), !!g('nascimento').value && idadeNoEvento(g('nascimento').value) !== null);
+  need(g('vinculo'), !!g('vinculo').value);
+  need(g('experiencia'), !!g('experiencia').value);
+
+  const mods = [...document.querySelectorAll('input[name=modalidade]:checked')].map(i => i.value);
+  const modField = document.getElementById('modalidades').closest('.field');
+  modField.classList.toggle('invalid', mods.length === 0);
+  if (!mods.length) { ok = false; if (!first) first = document.getElementById('modalidades'); }
+
+  if (guard.classList.contains('show')){
+    need(g('resp_nome'), g('resp_nome').value.trim().length >= 5);
+    need(g('resp_contato'), g('resp_contato').value.replace(/\D/g,'').length >= 10);
+  }
+  [['aceite'], ['lgpd']].forEach(([id]) => {
+    const cb = g(id), campo = cb.closest('.field');
+    campo.classList.toggle('invalid', !cb.checked);
+    if (!cb.checked) { ok = false; if (!first) first = cb; }
+  });
+
+  if (first) first.scrollIntoView({behavior:'smooth', block:'center'});
+  return {ok, mods};
+}
+
+async function enviar(payload){
+  if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.indexOf('COLE_AQUI') === 0){
+    throw new Error('A URL do Apps Script ainda não foi configurada nesta página.');
+  }
+  const body = JSON.stringify(payload);
+  try{
+    const r = await fetch(APPS_SCRIPT_URL, {
+      method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body, redirect:'follow'
+    });
+    const data = await r.json().catch(() => ({ok:true}));
+    if (data && data.ok === false) throw new Error(data.error || 'Falha ao gravar.');
+    return true;
+  }catch(err){
+    /* Fallback: alguns navegadores bloqueiam a leitura da resposta do Apps Script (CORS).
+       O envio em modo no-cors ainda grava a linha na planilha. */
+    await fetch(APPS_SCRIPT_URL, {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body});
+    return true;
+  }
+}
+
+const formI = document.getElementById('form-inscricao'), btnI = document.getElementById('btn-inscricao'), stI = document.getElementById('status-inscricao');
+formI.addEventListener('submit', async e => {
+  e.preventDefault();
+  const {ok, mods} = validaInscricao();
+  if (!ok){ stI.className = 'status bad'; stI.textContent = 'Confira os campos destacados.'; return; }
+  btnI.disabled = true; btnI.innerHTML = '<span class="spin"></span> Enviando…';
+  stI.className = 'status'; stI.textContent = '';
+  const g = id => document.getElementById(id);
+  const payload = {
+    form:'inscricao',
+    nome:g('nome').value.trim(), email:g('email').value.trim(), whatsapp:g('whatsapp').value.trim(),
+    nascimento:g('nascimento').value, idade_no_evento:idadeNoEvento(g('nascimento').value),
+    vinculo:g('vinculo').value, modalidades:mods.join(' | '), nick:g('nick').value.trim(),
+    experiencia:g('experiencia').value,
+    responsavel_nome:g('resp_nome').value.trim(), responsavel_contato:g('resp_contato').value.trim(),
+    observacoes:g('obs').value.trim(),
+    aceite_regulamento:g('aceite').checked ? 'Sim' : 'Não',
+    consentimento_lgpd:g('lgpd').checked ? 'Sim' : 'Não',
+    apelido:g('apelido').value,
+    _ms:Date.now() - ABERTURA,
+    autoriza_imagem:g('imagem').checked ? 'Sim' : 'Não',
+    origem:location.origin + location.pathname
+  };
+  try{
+    await enviar(payload);
+    formI.classList.add('form-hidden');
+    document.getElementById('success-inscricao').classList.add('show');
+    document.getElementById('inscricao').scrollIntoView({behavior:'smooth', block:'center'});
+  }catch(err){
+    stI.className = 'status bad';
+    stI.textContent = 'Não foi possível enviar agora. ' + err.message;
+  }finally{
+    btnI.disabled = false; btnI.innerHTML = 'Confirmar inscrição ⚡';
+  }
+});
+
+document.getElementById('nova-inscricao').addEventListener('click', () => {
+  formI.reset();
+  document.querySelectorAll('.opt').forEach(o => o.classList.remove('checked'));
+  document.querySelectorAll('.field').forEach(f => f.classList.remove('invalid'));
+  guard.classList.remove('show'); checkIdade();
+  document.getElementById('success-inscricao').classList.remove('show');
+  formI.classList.remove('form-hidden');
+  stI.textContent = '';
+});
+
+const formD = document.getElementById('form-duvida'), btnD = document.getElementById('btn-duvida'), stD = document.getElementById('status-duvida');
+formD.addEventListener('submit', async e => {
+  e.preventDefault();
+  const g = id => document.getElementById(id);
+  let ok = true, first = null;
+  const need = (el, cond) => { const bad = !cond; setErr(el, bad); if (bad && !first) first = el; if (bad) ok = false; };
+  need(g('d_nome'), g('d_nome').value.trim().length >= 3);
+  need(g('d_email'), isEmail(g('d_email').value));
+  need(g('d_msg'), g('d_msg').value.trim().length >= 10);
+  if (!ok){ if (first) first.focus(); stD.className='status bad'; stD.textContent='Confira os campos destacados.'; return; }
+  btnD.disabled = true; btnD.innerHTML = '<span class="spin"></span> Enviando…'; stD.textContent = '';
+  try{
+    await enviar({form:'duvida', nome:g('d_nome').value.trim(), email:g('d_email').value.trim(), mensagem:g('d_msg').value.trim(), apelido:g('d_apelido').value, _ms:Date.now() - ABERTURA, origem:location.origin + location.pathname});
+    formD.classList.add('form-hidden');
+    document.getElementById('success-duvida').classList.add('show');
+  }catch(err){
+    stD.className = 'status bad'; stD.textContent = 'Não foi possível enviar agora. ' + err.message;
+  }finally{
+    btnD.disabled = false; btnD.innerHTML = 'Enviar dúvida';
+  }
+});
+</script>
+</body>
+</html>

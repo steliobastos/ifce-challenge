@@ -1,0 +1,4 @@
+Pasta de imagens da landing page.
+
+  logo-ifce.png   Marca do IFCE (PNG com fundo transparente).
+                  Se o arquivo faltar, a pagina desenha um selo verde no lugar.
