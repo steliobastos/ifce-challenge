@@ -25,6 +25,14 @@
 
 /* ═══════════════════════════ CONFIGURAÇÃO ═══════════════════════════ */
 
+/** Roda ao abrir a planilha: cria o menu "IFCE Challenge" com o botão de configuração. */
+function onOpen() {
+  SpreadsheetApp.getUi()
+    .createMenu('IFCE Challenge')
+    .addItem('Configurar planilha', 'configurarPeloMenu')
+    .addToUi();
+}
+
 /** Rode uma vez, pelo editor, com a planilha já criada. */
 function configurar() {
   var props = PropertiesService.getScriptProperties();
@@ -32,6 +40,13 @@ function configurar() {
   // Descomente e ajuste para receber um aviso a cada envio:
   // props.setProperty('EMAIL_ORGANIZACAO', 'organizacao@ifce.edu.br');
   Logger.log('Configurado. Planilha: ' + props.getProperty('PLANILHA_ID'));
+}
+
+/** Mesma configuração acima, mas chamada pelo botão do menu, com aviso visível na tela. */
+function configurarPeloMenu() {
+  configurar();
+  var id = PropertiesService.getScriptProperties().getProperty('PLANILHA_ID');
+  SpreadsheetApp.getUi().alert('Planilha configurada!\nID registrado: ' + id);
 }
 
 var LIMITES = {
