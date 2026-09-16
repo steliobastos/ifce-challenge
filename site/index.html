@@ -6,10 +6,10 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data: https://i.ytimg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src https://script.google.com https://script.googleusercontent.com; frame-src https://www.youtube-nocookie.com; form-action 'none'; base-uri 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="theme-color" content="#050817">
-<title>IFCE Challenge — Pokémon TCG | 19/09 no IFCE Campus Horizonte</title>
-<meta name="description" content="Campeonato de Pokémon TCG no IFCE Campus Horizonte. Sábado, 19 de setembro, das 9h às 11h, no Laboratório de Informática 2. Entrada gratuita, sem premiação. Torneio no TCG Live, liga casual com cartas físicas, troca de cartas e oficina para iniciantes.">
-<meta property="og:title" content="IFCE Challenge — Pokémon TCG">
-<meta property="og:description" content="19/09, 9h às 11h, Laboratório de Informática 2. Gratuito. Torneio, troca de cartas e oficina para quem nunca jogou.">
+<title>IFCE Challenge | 19/09 no IFCE Campus Horizonte — palestra, Pokémon TCG e robótica</title>
+<meta name="description" content="Uma manhã inteira no IFCE Campus Horizonte, sábado 19 de setembro, das 8h às 11h30. Palestra &quot;Soberania Digital&quot; com o Prof. Mauro Oliveira, torneio de Pokémon TCG no Laboratório de Informática 2 e oficina de robótica com LEGO Mindstorms no Laboratório de Informática 1. Entrada gratuita.">
+<meta property="og:title" content="IFCE Challenge — palestra, Pokémon TCG e robótica">
+<meta property="og:description" content="19/09, 8h às 11h30, IFCE Campus Horizonte. Gratuito. Palestra sobre soberania digital, torneio de Pokémon TCG e oficina de robótica com LEGO Mindstorms.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232F6BFF'/%3E%3Cpath d='M35 12 20 36h10l-3 16 17-25H33z' fill='%23FFD24A'/%3E%3C/svg%3E">
@@ -261,6 +261,18 @@ header.nav.stuck{background:rgba(5,8,23,.86);backdrop-filter:blur(14px);border-b
 .alert .ai{line-height:1}
 .alert p{margin:0;font-size:.95rem;color:#F6EACA}
 .alert b{color:var(--gold)}
+.alert.info{background:linear-gradient(120deg,rgba(57,211,255,.10),rgba(57,211,255,.03));border-color:rgba(57,211,255,.32)}
+.alert.info p{color:#DCEEFB}
+.alert.info b{color:var(--cyan)}
+
+/* ============ PALESTRANTE ============ */
+.speaker{display:flex;gap:1.3rem;align-items:center;background:var(--card);border:1px solid var(--line);
+  border-radius:var(--r);padding:1.2rem 1.3rem;margin-top:1.8rem}
+.speaker img{width:104px;height:104px;border-radius:50%;object-fit:cover;flex:0 0 auto;
+  border:2px solid rgba(111,208,124,.45);box-shadow:0 10px 30px -12px rgba(0,0,0,.9)}
+.speaker b{display:block;font-size:1.05rem}
+.speaker small{display:block;color:var(--ink-soft);font-size:.88rem;margin-top:.3rem;line-height:1.55}
+@media(max-width:520px){.speaker{flex-direction:column;text-align:center}}
 
 /* ============ FORMULÁRIOS ============ */
 .form-wrap{background:linear-gradient(160deg,rgba(120,160,255,.09),rgba(120,160,255,.02));border:1px solid var(--line-strong);
@@ -295,6 +307,10 @@ select option{background:#0A1030;color:var(--ink)}
 .guard{display:none;grid-column:1/-1;border:1px dashed rgba(255,210,74,.4);background:rgba(255,210,74,.05);border-radius:16px;
   padding:1.1rem;gap:1rem 1.1rem;grid-template-columns:1fr 1fr}
 .guard.show{display:grid}
+.condbox{display:none;grid-column:1/-1;border:1px solid var(--line-strong);background:rgba(47,107,255,.06);
+  border-radius:16px;padding:1.1rem 1.2rem}
+.condbox.show{display:block}
+.condbox .ctitle{font-weight:800;color:var(--cyan);font-size:.92rem;margin:0 0 .9rem}
 @media(max-width:720px){.guard.show{grid-template-columns:1fr}}
 .guard .gtitle{grid-column:1/-1;font-weight:800;color:var(--gold);font-size:.92rem;margin:0}
 .hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
@@ -391,6 +407,9 @@ footer a:hover{color:var(--cyan);transform:translateX(3px)}
     <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 9.2V6.6a1.6 1.6 0 0 1 1.6-1.6h14.8A1.6 1.6 0 0 1 21 6.6v2.6a2.8 2.8 0 0 0 0 5.6v2.6a1.6 1.6 0 0 1-1.6 1.6H4.6A1.6 1.6 0 0 1 3 17.4v-2.6a2.8 2.8 0 0 0 0-5.6Z"/><path d="M13.5 5v14" stroke-dasharray="2 2.6"/></symbol>
     <symbol id="i-family" viewBox="0 0 24 24"><circle cx="7.5" cy="7" r="2.8"/><circle cx="17" cy="7.6" r="2.4"/><path d="M2.8 20.5c0-2.9 2.1-5 4.7-5s4.7 2.1 4.7 5M13.6 20.5c0-2.4 1.5-4.3 3.4-4.3s3.4 1.9 3.4 4.3"/></symbol>
     <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.3 2.7 5.5 6.1.9-4.4 4.3 1 6-5.4-2.9-5.4 2.9 1-6L3.2 9.7l6.1-.9z"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5v4M8.5 21.5h7"/></symbol>
+    <symbol id="i-robot" viewBox="0 0 24 24"><rect x="4" y="7.5" width="16" height="12" rx="3"/><path d="M12 3v4.5M8.5 19.5v2M15.5 19.5v2M1.8 11.5v4M22.2 11.5v4"/><circle cx="9" cy="12.5" r="1.3"/><circle cx="15" cy="12.5" r="1.3"/><path d="M9.5 16h5"/></symbol>
+    <symbol id="i-coffee" viewBox="0 0 24 24"><path d="M3.5 8.5h14v6a5 5 0 0 1-5 5h-4a5 5 0 0 1-5-5z"/><path d="M17.5 10h1.8a2.6 2.6 0 0 1 0 5.2h-1.8M7 2.6v2.6M11 2.6v2.6M15 2.6v2.6"/></symbol>
     <symbol id="i-camera" viewBox="0 0 24 24"><path d="M3 8.6h3.4L8.2 6h7.6l1.8 2.6H21a1.6 1.6 0 0 1 1.6 1.6v8a1.6 1.6 0 0 1-1.6 1.6H3a1.6 1.6 0 0 1-1.6-1.6v-8A1.6 1.6 0 0 1 3 8.6Z"/><circle cx="12" cy="14" r="3.4"/></symbol>
   </defs>
 </svg>
@@ -400,9 +419,11 @@ footer a:hover{color:var(--cyan);transform:translateX(3px)}
     <a class="brand" href="#top"><svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="mk" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#39D3FF"/><stop offset=".55" stop-color="#2F6BFF"/><stop offset="1" stop-color="#6C4BFF"/></linearGradient></defs><rect x="1" y="1" width="38" height="38" rx="11" fill="url(#mk)"/><rect x="9.5" y="8" width="14" height="20" rx="3" fill="rgba(255,255,255,.28)" transform="rotate(-10 16.5 18)"/><rect x="16.5" y="10" width="14" height="20" rx="3" fill="rgba(255,255,255,.20)" transform="rotate(9 23.5 20)"/><path d="M22.6 12.2 16 22.4h4.4l-1.2 6.4 6.9-10.2h-4.4z" fill="#FFD24A"/></svg> IFCE Challenge <span class="brand-sub">· Pokémon TCG</span></a>
     <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false">☰</button>
     <nav class="nav-links" id="navlinks">
-      <a href="#evento">O evento</a>
+      <a href="#manha">A manhã</a>
+      <a href="#palestra">Palestra</a>
+      <a href="#evento">Pokémon TCG</a>
+      <a href="#robotica">Robótica</a>
       <a href="#programacao">Programação</a>
-      <a href="#aprenda">Aprenda a jogar</a>
       <a href="#regulamento">Regulamento</a>
       <a class="btn btn-primary nav-cta" href="#inscricao">Inscreva-se grátis</a>
     </nav>
@@ -420,12 +441,12 @@ footer a:hover{color:var(--cyan);transform:translateX(3px)}
         <span class="line"><span>IFCE <em style="font-style:normal" class="gradtext">Challenge</em></span></span>
         <span class="line"><span>Pokémon TCG</span></span>
       </h1>
-      <p class="lead">Um sábado de manhã inteiro dedicado ao Pokémon Estampas Ilustradas: torneio no <strong>Pokémon TCG Live</strong>, liga casual com cartas físicas, espaço livre de troca e uma oficina para quem <strong>nunca jogou</strong>. Entrada gratuita, aberta à comunidade.</p>
+      <p class="lead">Uma manhã inteira de tecnologia no campus: a palestra <strong>“Soberania Digital”</strong> com o Prof. Mauro Oliveira abre o dia às 8h e, depois do intervalo, o campus se divide em duas trilhas simultâneas — o <strong>torneio de Pokémon TCG</strong> e a <strong>oficina de robótica com LEGO Mindstorms</strong>. Entrada gratuita.</p>
 
       <div class="facts">
         <span class="fact"><svg class="i" aria-hidden="true"><use href="#i-calendar"/></svg> <b>Sábado, 19/09/2026</b></span>
-        <span class="fact"><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg> <b>9h às 11h</b></span>
-        <span class="fact"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg> <b>Laboratório de Informática 2</b></span>
+        <span class="fact"><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg> <b>8h às 11h30</b></span>
+        <span class="fact"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg> <b>IFCE Campus Horizonte</b></span>
         <span class="fact"><svg class="i" aria-hidden="true"><use href="#i-ticket"/></svg> <b>Gratuito</b></span>
       </div>
 
@@ -465,13 +486,93 @@ footer a:hover{color:var(--cyan);transform:translateX(3px)}
   </div>
 </section>
 
+<!-- ================= A MANHÃ ================= -->
+<section id="manha"><div class="pattern"></div>
+  <div class="wrap">
+    <div class="rv" style="text-align:center;max-width:760px;margin-inline:auto">
+      <span class="eyebrow">19 de setembro · 8h às 11h30</span>
+      <h2>Três momentos em uma <span class="gradtext">só manhã</span></h2>
+      <p class="lead" style="margin-inline:auto">O dia começa com todo mundo junto na palestra de abertura. Depois do intervalo, o campus se divide em duas trilhas que acontecem <strong>ao mesmo tempo</strong>, em laboratórios diferentes — na inscrição você escolhe uma delas.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card rv d1">
+        <div class="ico"><svg class="i" aria-hidden="true"><use href="#i-mic"/></svg></div>
+        <span class="tl-time">08h00 — 09h00</span>
+        <h3>Palestra de abertura</h3>
+        <p>“Soberania Digital: Colonização e Letramento”, com o Prof. Mauro Oliveira, mais de 50 anos de trajetória no IFCE. Aberta a todos os participantes.</p>
+        <span class="tag">Todo mundo junto</span>
+      </article>
+      <article class="card rv d2">
+        <div class="ico"><svg class="i" aria-hidden="true"><use href="#i-coffee"/></svg></div>
+        <span class="tl-time">09h00 — 09h15</span>
+        <h3>Intervalo e lanche</h3>
+        <p>Quinze minutos para respirar e trocar ideia antes das trilhas começarem. O lanche é oferecido aos estudantes do IFCE.</p>
+        <span class="tag gold">Lanche para alunos do IFCE</span>
+      </article>
+      <article class="card rv d3">
+        <div class="ico"><svg class="i" aria-hidden="true"><use href="#i-cards"/></svg></div>
+        <span class="tl-time">09h15 — 11h30</span>
+        <h3>Pokémon TCG Challenge</h3>
+        <p>Torneio no TCG Live, liga casual com cartas físicas, espaço de troca e oficina para iniciantes. No Laboratório de Informática 2.</p>
+        <span class="tag">Aberto à comunidade</span>
+      </article>
+      <article class="card rv d4">
+        <div class="ico"><svg class="i" aria-hidden="true"><use href="#i-robot"/></svg></div>
+        <span class="tl-time">09h15 — 11h30</span>
+        <h3>Oficina de Robótica</h3>
+        <p>LEGO Mindstorms EV3: acionadores, sensores e programação de um robô seguidor de linha. No Laboratório de Informática 1.</p>
+        <span class="tag gold">Exclusiva para alunos do IFCE</span>
+      </article>
+    </div>
+
+    <div class="alert info rv">
+      <span class="ai"><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg></span>
+      <p><b>As duas trilhas acontecem no mesmo horário</b>, em laboratórios diferentes — não dá para fazer as duas. Escolha uma no formulário de inscrição. A palestra e o intervalo são comuns a todos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PALESTRA ================= -->
+<section id="palestra">
+  <div class="wrap">
+    <div class="split">
+      <div class="rv">
+        <span class="eyebrow">08h00 — 09h00 · Abertura</span>
+        <h2>Soberania Digital:<br><span class="gradtext">Colonização e Letramento</span></h2>
+        <p class="lead">Vivemos um momento decisivo, em que a promessa de um futuro cada vez mais digital convive com os riscos de novas formas de dependência e colonização tecnológica. Uma reflexão necessária e urgente sobre o lugar do Brasil no cenário tecnológico global.</p>
+
+        <div class="speaker rv d1">
+          <img src="img/mauro-oliveira.webp" alt="Professor Mauro Oliveira" loading="lazy" width="104" height="104">
+          <span>
+            <b>Prof. Mauro Oliveira</b>
+            <small>Mais de 50 anos de trajetória no IFCE. Pesquisador e professor, com atuação em redes, inovação e políticas de tecnologia.</small>
+          </span>
+        </div>
+      </div>
+
+      <div class="rv d2">
+        <p>Em um mundo marcado pelo avanço acelerado da <strong>Inteligência Artificial</strong>, da <strong>computação em nuvem</strong> e da <strong>cibersegurança</strong>, discutir soberania digital significa compreender que essas tecnologias ultrapassam a dimensão técnica: elas se tornaram recursos estratégicos relacionados ao desenvolvimento, à autonomia, ao poder e à segurança das nações.</p>
+        <p style="margin-top:1rem">A palestra aborda os desafios enfrentados pelo Brasil e pelo Sul Global diante da crescente dependência de tecnologias e infraestruturas controladas por grandes potências e corporações estrangeiras. E coloca uma questão no centro: <strong>queremos ser apenas consumidores das tecnologias e das decisões produzidas por outros, ou protagonistas da construção do nosso próprio futuro digital?</strong></p>
+        <ul class="checklist">
+          <li>Letramento digital como competência essencial do século XXI</li>
+          <li>Compreender criticamente as tecnologias, não apenas usá-las</li>
+          <li>Distinguir inovação de dependência e avanço de perda de autonomia</li>
+          <li>Quem desenvolve, quem controla a infraestrutura e quem decide no mundo digital</li>
+        </ul>
+        <p style="margin-top:1.4rem;color:var(--ink-soft);font-size:.95rem"><em>Uma chamada à consciência, ao debate e à ação.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= O EVENTO ================= -->
 <section id="evento"><div class="pattern"></div>
   <div class="wrap">
     <div class="rv">
-      <span class="eyebrow">Quatro atividades, uma manhã</span>
+      <span class="eyebrow">Trilha 1 · 09h15 — 11h30 · Laboratório de Informática 2</span>
       <h2>Tem lugar para <span class="gradtext">quem compete</span><br>e para quem está começando</h2>
-      <p class="lead">O IFCE Challenge não tem taxa de inscrição e <strong>não distribui premiação</strong>. É um encontro de integração entre estudantes do IFCE e a comunidade, com competição amigável no centro e espaço de sobra para aprender e trocar cartas.</p>
+      <p class="lead">A trilha de Pokémon TCG reúne quatro atividades em paralelo. Não tem taxa de inscrição e <strong>não distribui premiação</strong>: é um encontro de integração entre estudantes do IFCE e a comunidade, com competição amigável no centro e espaço de sobra para aprender e trocar cartas.</p>
     </div>
 
     <div class="cards">
@@ -508,30 +609,72 @@ footer a:hover{color:var(--cyan);transform:translateX(3px)}
   </div>
 </section>
 
+<!-- ================= ROBÓTICA ================= -->
+<section id="robotica"><div class="pattern"></div>
+  <div class="wrap">
+    <div class="split">
+      <div class="rv">
+        <span class="eyebrow">Trilha 2 · 09h15 — 11h30 · Laboratório de Informática 1</span>
+        <h2>Oficina de Robótica<br>com <span class="gradtext">LEGO Mindstorms</span></h2>
+        <p class="lead">Mão na massa com os kits <strong>LEGO Mindstorms EV3</strong>: montar, ligar sensores e programar um robô que percorre sozinho um circuito. Não é preciso saber programar antes — a oficina começa do zero.</p>
+        <ul class="checklist">
+          <li>Conceitos básicos de <strong>acionadores e sensores</strong></li>
+          <li><strong>Programação de robô seguidor de linha</strong></li>
+          <li>Todo o material é fornecido pelo laboratório</li>
+          <li>Acontece em paralelo ao torneio de Pokémon TCG</li>
+        </ul>
+        <p style="margin-top:1.4rem"><a class="btn btn-primary" href="#inscricao">Quero a oficina de robótica ⚡</a></p>
+      </div>
+
+      <div class="rv d2">
+        <div class="cards" style="margin-top:0;grid-template-columns:1fr">
+          <article class="card">
+            <div class="ico"><svg class="i" aria-hidden="true"><use href="#i-bolt"/></svg></div>
+            <h3>Acionadores e sensores</h3>
+            <p>Como o robô “enxerga” e reage: sensor de cor lendo a linha, motores respondendo ao que foi lido, e a lógica que conecta os dois.</p>
+          </article>
+          <article class="card">
+            <div class="ico"><svg class="i" aria-hidden="true"><use href="#i-robot"/></svg></div>
+            <h3>Seguidor de linha</h3>
+            <p>O projeto da oficina: programar o EV3 para percorrer um circuito sozinho, ajustando o comportamento até ele completar a pista.</p>
+          </article>
+        </div>
+
+        <div class="alert rv d3">
+          <span class="ai"><svg class="i" aria-hidden="true"><use href="#i-cap"/></svg></span>
+          <p><b>Oficina exclusiva para alunos do IFCE.</b> As vagas são limitadas pelo número de kits disponíveis no laboratório, por ordem de inscrição.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= PROGRAMAÇÃO ================= -->
 <section id="programacao">
   <div class="wrap">
     <div class="split">
       <div class="rv">
         <span class="eyebrow">Programação</span>
-        <h2>Duas horas <span class="gradtext">cronometradas</span></h2>
-        <p class="lead">São exatamente 120 minutos, então tudo começa no horário. O check-in fecha às <strong>9h10</strong> — quem chegar depois fica fora do pareamento da primeira rodada.</p>
+        <h2>A manhã, minuto <span class="gradtext">a minuto</span></h2>
+        <p class="lead">Tudo começa no horário. A palestra abre às <strong>8h em ponto</strong> e o check-in das trilhas fecha às <strong>9h25</strong> — quem chegar depois fica fora do pareamento da primeira rodada do torneio.</p>
         <ul class="checklist">
-          <li>3 rodadas suíças de 30 minutos, em Md1 (melhor de 1)</li>
+          <li>Palestra e intervalo são comuns às duas trilhas</li>
+          <li>Das 9h15 às 11h30, TCG e robótica correm em paralelo</li>
+          <li>No torneio: 3 rodadas suíças de 30 minutos, em Md1</li>
           <li>Sem mata-mata: a classificação sai da soma de pontos</li>
-          <li>Vitória 3 pts · Empate 1 pt · Derrota 0 pts</li>
-          <li>Oficina e troca de cartas acontecem em paralelo às rodadas</li>
         </ul>
       </div>
       <div class="rv d2">
         <div class="tl" id="tl">
           <div class="tl-fill" id="tlfill"></div>
-          <div class="tl-item"><div class="tl-time">09h00 — 09h10</div><div class="tl-title">Credenciamento e check-in</div><p class="tl-desc">Abertura do espaço de troca de cartas.</p></div>
-          <div class="tl-item"><div class="tl-time">09h10 — 09h20</div><div class="tl-title">Abertura e pareamentos</div><p class="tl-desc">Explicação do regulamento e divulgação dos confrontos da 1ª rodada.</p></div>
-          <div class="tl-item"><div class="tl-time">09h20 — 09h50</div><div class="tl-title">1ª rodada · Oficina</div><p class="tl-desc">Rodada no TCG Live e com cartas físicas. Em paralelo, a oficina "Aprenda a jogar".</p></div>
-          <div class="tl-item"><div class="tl-time">09h50 — 10h20</div><div class="tl-title">2ª rodada</div><p class="tl-desc">Troca de cartas e partidas livres para quem estiver fora da rodada.</p></div>
-          <div class="tl-item"><div class="tl-time">10h20 — 10h50</div><div class="tl-title">3ª rodada</div><p class="tl-desc">Última rodada da fase suíça.</p></div>
-          <div class="tl-item"><div class="tl-time">10h50 — 11h00</div><div class="tl-title">Classificação e encerramento</div><p class="tl-desc">Apuração dos pontos, anúncio dos primeiros colocados e organização do espaço.</p></div>
+          <div class="tl-item"><div class="tl-time">08h00 — 09h00</div><div class="tl-title">Palestra “Soberania Digital”</div><p class="tl-desc">Abertura do evento com o Prof. Mauro Oliveira. Aberta a todos os inscritos, das duas trilhas.</p></div>
+          <div class="tl-item"><div class="tl-time">09h00 — 09h15</div><div class="tl-title">Intervalo e lanche</div><p class="tl-desc">Lanche oferecido aos estudantes do IFCE. Deslocamento para os laboratórios.</p></div>
+          <div class="tl-item"><div class="tl-time">09h15 — 09h25</div><div class="tl-title">Credenciamento das trilhas</div><p class="tl-desc">Check-in no Lab. de Informática 2 (TCG) e no Lab. de Informática 1 (robótica). Abertura do espaço de troca de cartas.</p></div>
+          <div class="tl-item"><div class="tl-time">09h25 — 09h35</div><div class="tl-title">Abertura e pareamentos</div><p class="tl-desc">Explicação do regulamento e divulgação dos confrontos da 1ª rodada. Na robótica, apresentação dos kits EV3.</p></div>
+          <div class="tl-item"><div class="tl-time">09h35 — 10h05</div><div class="tl-title">1ª rodada · Oficina TCG · Robótica</div><p class="tl-desc">Rodada no TCG Live e com cartas físicas, oficina "Aprenda a jogar" e, no Lab. 1, acionadores e sensores.</p></div>
+          <div class="tl-item"><div class="tl-time">10h05 — 10h35</div><div class="tl-title">2ª rodada · Robótica</div><p class="tl-desc">Troca de cartas e partidas livres para quem estiver fora da rodada. No Lab. 1, programação do seguidor de linha.</p></div>
+          <div class="tl-item"><div class="tl-time">10h35 — 11h05</div><div class="tl-title">3ª rodada · Robótica</div><p class="tl-desc">Última rodada da fase suíça. No Lab. 1, testes dos robôs na pista.</p></div>
+          <div class="tl-item"><div class="tl-time">11h05 — 11h30</div><div class="tl-title">Classificação e encerramento</div><p class="tl-desc">Apuração dos pontos, anúncio dos primeiros colocados, encerramento da oficina e organização dos espaços.</p></div>
         </div>
       </div>
     </div>
@@ -550,7 +693,7 @@ footer a:hover{color:var(--cyan);transform:translateX(3px)}
           <li>Crie sua conta gratuita do Pokémon Trainer Club <strong>antes do evento</strong></li>
           <li>Instale e abra o Pokémon TCG Live pelo menos uma vez em casa</li>
           <li>Anote seu <strong>nick</strong> — ele é usado nos pareamentos</li>
-          <li>Chegue às 9h: criar conta no dia consome toda a oficina</li>
+          <li>Chegue às 9h15: criar conta no dia consome toda a oficina</li>
         </ul>
         <p style="margin-top:1.4rem"><a class="btn btn-ghost" href="https://tcg.pokemon.com/pt-br/tcgl/" target="_blank" rel="noopener">Baixar o Pokémon TCG Live ↗</a></p>
       </div>
@@ -570,7 +713,7 @@ footer a:hover{color:var(--cyan);transform:translateX(3px)}
     <div class="rv" style="text-align:center;max-width:720px;margin-inline:auto">
       <span class="eyebrow">Inscrição gratuita</span>
       <h2>Garanta sua <span class="gradtext">vaga</span></h2>
-      <p class="lead" style="margin-inline:auto">As vagas do torneio no TCG Live são limitadas pelo número de computadores do laboratório, por ordem de inscrição. A inscrição também vale para quem vai só à oficina ou ao espaço de troca.</p>
+      <p class="lead" style="margin-inline:auto">Uma inscrição só para a manhã inteira: você marca se vem à palestra e escolhe uma das duas trilhas das 9h15. As vagas do torneio no TCG Live e da oficina de robótica são limitadas pelos equipamentos de cada laboratório, por ordem de inscrição.</p>
     </div>
 
     <div class="form-wrap rv d1" style="margin-top:2.4rem">
@@ -618,32 +761,55 @@ footer a:hover{color:var(--cyan);transform:translateX(3px)}
           </div>
 
           <div class="field full">
-            <label>Do que você quer participar? <span class="req">*</span></label>
-            <div class="opts" id="modalidades">
-              <label class="opt"><input type="checkbox" name="modalidade" value="Torneio TCG Live"><span><b>Torneio no TCG Live</b><small>Nos computadores do laboratório</small></span></label>
-              <label class="opt"><input type="checkbox" name="modalidade" value="Liga casual (cartas físicas)"><span><b>Liga com cartas físicas</b><small>Levo meu próprio baralho</small></span></label>
-              <label class="opt"><input type="checkbox" name="modalidade" value="Oficina Aprenda a jogar"><span><b>Oficina Aprenda a jogar</b><small>Nunca joguei / quero aprender</small></span></label>
-              <label class="opt"><input type="checkbox" name="modalidade" value="Troca de cartas"><span><b>Troca de cartas</b><small>Vou levar meu binder</small></span></label>
+            <label>Palestra de abertura · 8h às 9h</label>
+            <div class="opts" id="palestra-opt" style="grid-template-columns:1fr">
+              <label class="opt" style="align-items:center"><input type="checkbox" id="opt-palestra" name="palestra"><span><b>Vou assistir à palestra “Soberania Digital”</b><small>Com o Prof. Mauro Oliveira. Aberta a todos os inscritos, das duas trilhas.</small></span></label>
             </div>
-            <span class="err-msg">Escolha pelo menos uma atividade.</span>
           </div>
 
-          <div class="field">
-            <label for="nick">Nick no Pokémon TCG Live</label>
-            <input type="text" id="nick" name="nick" placeholder="Ex.: Treinador#1234">
-            <span class="hint">Necessário para o torneio. Deixe em branco se ainda não tem conta.</span>
+          <div class="field full">
+            <label>Das 9h15 às 11h30, você vai participar de: <span class="req">*</span></label>
+            <div class="opts" id="trilhas">
+              <label class="opt"><input type="radio" name="trilha" value="Pokémon TCG Challenge"><span><b>Pokémon TCG Challenge</b><small>Laboratório de Informática 2 · aberto à comunidade</small></span></label>
+              <label class="opt"><input type="radio" name="trilha" value="Oficina de Robótica (LEGO Mindstorms)"><span><b>Oficina de Robótica</b><small>Laboratório de Informática 1 · exclusiva para alunos do IFCE</small></span></label>
+              <label class="opt"><input type="radio" name="trilha" value="Apenas a palestra"><span><b>Só a palestra</b><small>Não vou ficar para a segunda parte da manhã</small></span></label>
+            </div>
+            <span class="hint">As duas trilhas acontecem no mesmo horário, em laboratórios diferentes — só dá para escolher uma.</span>
+            <span class="err-msg" id="err-trilha">Escolha uma das opções acima.</span>
           </div>
 
-          <div class="field">
-            <label for="experiencia">Sua experiência com o jogo <span class="req">*</span></label>
-            <select id="experiencia" name="experiencia" required>
-              <option value="">Selecione…</option>
-              <option>Nunca joguei</option>
-              <option>Já joguei pouquíssimas vezes</option>
-              <option>Jogo casualmente</option>
-              <option>Jogo com frequência / competitivo</option>
-            </select>
-            <span class="err-msg">Selecione uma opção.</span>
+          <div class="condbox" id="bloco-tcg">
+            <p class="ctitle">🃏 Sobre a sua participação no Pokémon TCG</p>
+            <div class="fgrid">
+              <div class="field full">
+                <label>Do que você quer participar? <span class="req">*</span></label>
+                <div class="opts" id="modalidades">
+                  <label class="opt"><input type="checkbox" name="modalidade" value="Torneio TCG Live"><span><b>Torneio no TCG Live</b><small>Nos computadores do laboratório</small></span></label>
+                  <label class="opt"><input type="checkbox" name="modalidade" value="Liga casual (cartas físicas)"><span><b>Liga com cartas físicas</b><small>Levo meu próprio baralho</small></span></label>
+                  <label class="opt"><input type="checkbox" name="modalidade" value="Oficina Aprenda a jogar"><span><b>Oficina Aprenda a jogar</b><small>Nunca joguei / quero aprender</small></span></label>
+                  <label class="opt"><input type="checkbox" name="modalidade" value="Troca de cartas"><span><b>Troca de cartas</b><small>Vou levar meu binder</small></span></label>
+                </div>
+                <span class="err-msg">Escolha pelo menos uma atividade.</span>
+              </div>
+
+              <div class="field">
+                <label for="nick">Nick no Pokémon TCG Live</label>
+                <input type="text" id="nick" name="nick" placeholder="Ex.: Treinador#1234">
+                <span class="hint">Necessário para o torneio. Deixe em branco se ainda não tem conta.</span>
+              </div>
+
+              <div class="field">
+                <label for="experiencia">Sua experiência com o jogo <span class="req">*</span></label>
+                <select id="experiencia" name="experiencia">
+                  <option value="">Selecione…</option>
+                  <option>Nunca joguei</option>
+                  <option>Já joguei pouquíssimas vezes</option>
+                  <option>Jogo casualmente</option>
+                  <option>Jogo com frequência / competitivo</option>
+                </select>
+                <span class="err-msg">Selecione uma opção.</span>
+              </div>
+            </div>
           </div>
 
           <div class="guard" id="guard">
@@ -699,7 +865,7 @@ footer a:hover{color:var(--cyan);transform:translateX(3px)}
       <div class="success" id="success-inscricao">
         <div class="big">✓</div>
         <h3>Inscrição confirmada!</h3>
-        <p class="lead" style="margin-inline:auto">Nos vemos no <strong>sábado, 19/09, às 9h</strong>, no Laboratório de Informática 2. Chegue com alguns minutos de antecedência: o check-in fecha às 9h10.</p>
+        <p class="lead" style="margin-inline:auto">Nos vemos no <strong>sábado, 19/09, às 8h</strong>, no IFCE Campus Horizonte. A palestra abre o dia e, às 9h15, cada trilha segue para o seu laboratório — o check-in delas fecha às 9h25.</p>
         <p><button class="btn btn-ghost" type="button" id="nova-inscricao">Inscrever outra pessoa</button></p>
       </div>
     </div>
@@ -724,12 +890,12 @@ footer a:hover{color:var(--cyan);transform:translateX(3px)}
     <div id="reg-list" class="rv d2">
 <details class="acc" data-text="1. ℹ️ Sobre o evento O IFCE Challenge é um encontro de um dia dedicado ao Pokémon TCG, aberto a jogadores experientes e, principalmente, a quem nunca jogou. A programação reúne um torneio no Pokémon TCG Live , usando os computadores do laboratório, uma liga casual com cartas físicas , um espaço livre para troca de cartas e um momento de ensino das regras básicas para iniciantes. O evento não tem fins lucrativos : não há taxa de inscrição, não há premiação em dinheiro, crédito ou produtos, e nenhuma atividade do evento envolve pagamento de qualquer natureza. "><summary>1. ℹ️ Sobre o evento</summary><div class="acc-body"><p>O IFCE Challenge é um encontro de um dia dedicado ao Pokémon TCG, aberto a jogadores experientes e, principalmente, a quem nunca jogou. A programação reúne <strong>um torneio no Pokémon TCG Live</strong>, usando os computadores do laboratório, <strong>uma liga casual com cartas físicas</strong>, <strong>um espaço livre para troca de cartas</strong> e <strong>um momento de ensino das regras básicas</strong> para iniciantes.</p>
 <p>O evento <strong>não tem fins lucrativos</strong>: não há taxa de inscrição, não há premiação em dinheiro, crédito ou produtos, e nenhuma atividade do evento envolve pagamento de qualquer natureza.</p></div></details>
-<details class="acc" data-text="2. 🎟️ Inscrições A inscrição é gratuita e deve ser feita pelo formulário da página oficial do evento . No formulário, o participante indica em qual(is) modalidade(s) quer jogar: TCG Live , cartas físicas ou apenas oficina / troca de cartas . As vagas do torneio de TCG Live são limitadas ao número de computadores disponíveis no laboratório . Havendo mais inscritos que máquinas, será formada lista de espera por ordem de inscrição. Não é necessário check-in por rodada , mas é obrigatório o check-in único na recepção , realizado das 9h às 9h10 . Quem não fizer o check-in nesse intervalo não entra no pareamento da primeira rodada . O evento tem duração fixa de 2 horas (9h às 11h). A pontualidade é essencial: as rodadas começam no horário previsto, com ou sem todos os jogadores na mesa, e o encerramento às 11h é improrrogável. Participar apenas da oficina, do espaço de troca ou assistir às partidas também requer inscrição , para controle de acesso ao campus. "><summary>2. 🎟️ Inscrições</summary><div class="acc-body"><ul>
+<details class="acc" data-text="2. 🎟️ Inscrições A inscrição é gratuita e deve ser feita pelo formulário da página oficial do evento . No formulário, o participante indica em qual(is) modalidade(s) quer jogar: TCG Live , cartas físicas ou apenas oficina / troca de cartas . As vagas do torneio de TCG Live são limitadas ao número de computadores disponíveis no laboratório . Havendo mais inscritos que máquinas, será formada lista de espera por ordem de inscrição. Não é necessário check-in por rodada , mas é obrigatório o check-in único na recepção , realizado das 9h15 às 9h25 . Quem não fizer o check-in nesse intervalo não entra no pareamento da primeira rodada . O evento tem duração fixa de 2h15 (9h15 às 11h30). A pontualidade é essencial: as rodadas começam no horário previsto, com ou sem todos os jogadores na mesa, e o encerramento às 11h30 é improrrogável. Participar apenas da oficina, do espaço de troca ou assistir às partidas também requer inscrição , para controle de acesso ao campus. "><summary>2. 🎟️ Inscrições</summary><div class="acc-body"><ul>
 <li>A inscrição é <strong>gratuita</strong> e deve ser feita pelo <strong>formulário da página oficial do evento</strong>.</li>
 <li>No formulário, o participante indica em qual(is) modalidade(s) quer jogar: <strong>TCG Live</strong>, <strong>cartas físicas</strong> ou <strong>apenas oficina / troca de cartas</strong>.</li>
 <li>As vagas do torneio de TCG Live são <strong>limitadas ao número de computadores disponíveis no laboratório</strong>. Havendo mais inscritos que máquinas, será formada lista de espera por ordem de inscrição.</li>
-<li><strong>Não é necessário check-in por rodada</strong>, mas é obrigatório o <strong>check-in único na recepção</strong>, realizado das <strong>9h às 9h10</strong>. Quem não fizer o check-in nesse intervalo <strong>não entra no pareamento da primeira rodada</strong>.</li>
-<li><strong>O evento tem duração fixa de 2 horas (9h às 11h).</strong> A pontualidade é essencial: as rodadas começam no horário previsto, com ou sem todos os jogadores na mesa, e o encerramento às 11h é improrrogável.</li>
+<li><strong>Não é necessário check-in por rodada</strong>, mas é obrigatório o <strong>check-in único na recepção</strong>, realizado das <strong>9h15 às 9h25</strong>. Quem não fizer o check-in nesse intervalo <strong>não entra no pareamento da primeira rodada</strong>.</li>
+<li><strong>O evento tem duração fixa de 2h15 (9h15 às 11h30).</strong> A pontualidade é essencial: as rodadas começam no horário previsto, com ou sem todos os jogadores na mesa, e o encerramento às 11h30 é improrrogável.</li>
 <li>Participar apenas da oficina, do espaço de troca ou assistir às partidas <strong>também requer inscrição</strong>, para controle de acesso ao campus.</li>
 </ul></div></details>
 <details class="acc" data-text="3. 👨‍👩‍👧 Participação de menores de 16 anos Participantes com menos de 16 anos de idade só podem permanecer no evento acompanhados de pai, mãe ou responsável legal , que deve estar presente no campus durante toda a permanência do menor. O responsável deve assinar a autorização de participação na recepção, apresentando documento de identificação com foto. A organização não assume a guarda de participantes menores de idade e não autoriza a saída de menores do campus desacompanhados. Participantes de 16 e 17 anos podem participar desacompanhados, mediante autorização assinada pelo responsável , entregue na recepção. "><summary>3. 👨‍👩‍👧 Participação de menores de 16 anos</summary><div class="acc-body"><ul>
@@ -740,7 +906,7 @@ footer a:hover{color:var(--cyan);transform:translateX(3px)}
 </ul></div></details>
 <details class="acc" data-text="4. 🚫 Premiação Não haverá premiação , em nenhuma modalidade. Não serão distribuídos dinheiro, créditos, cartas, produtos ou brindes vinculados ao desempenho nas partidas. O resultado final tem caráter simbólico : os classificados são anunciados no encerramento e a classificação completa é publicada nos canais do evento. "><summary>4. 🚫 Premiação</summary><div class="acc-body"><p><strong>Não haverá premiação</strong>, em nenhuma modalidade.</p>
 <p>Não serão distribuídos dinheiro, créditos, cartas, produtos ou brindes vinculados ao desempenho nas partidas. O resultado final tem caráter <strong>simbólico</strong>: os classificados são anunciados no encerramento e a classificação completa é publicada nos canais do evento.</p></div></details>
-<details class="acc" data-text="5. 📅 Cronograma do sábado O evento ocorre em um único bloco de 9h às 11h . A oficina e o espaço de troca de cartas funcionam em paralelo às rodadas, para que ninguém fique parado. Horário Atividade 09h00 – 09h10 Credenciamento e check-in · abertura do espaço de troca de cartas 09h10 – 09h20 Abertura oficial, explicação do regulamento e divulgação dos pareamentos 09h20 – 09h50 🖥️ 1ª rodada (TCG Live) · 🃏 1ª rodada (cartas físicas) · 🎓 oficina &quot;Aprenda a jogar&quot; 09h50 – 10h20 🖥️ 2ª rodada · 🃏 2ª rodada · 🔁 troca de cartas e partidas livres 10h20 – 10h50 🖥️ 3ª rodada · 🃏 3ª rodada · 🔁 troca de cartas e partidas livres 10h50 – 11h00 Apuração, anúncio da classificação, encerramento e organização do espaço Com duas horas de evento, não há intervalo formal entre as rodadas nem fase de mata-mata . O tempo entre uma rodada e outra é apenas o necessário para a divulgação do novo pareamento. A organização pode ajustar o cronograma no dia conforme o número de participantes — por exemplo, reduzir as rodadas para 20 minutos se o número de inscritos exigir uma rodada a mais. As alterações são anunciadas presencialmente e valem para todos. "><summary>5. 📅 Cronograma do sábado</summary><div class="acc-body"><p>O evento ocorre em <strong>um único bloco de 9h às 11h</strong>. A oficina e o espaço de troca de cartas funcionam <strong>em paralelo</strong> às rodadas, para que ninguém fique parado.</p>
+<details class="acc" data-text="5. 📅 Cronograma do sábado Este cronograma cobre apenas a trilha de Pokémon TCG. Antes dela, a manhã tem a palestra de abertura (8h às 9h) e o intervalo (9h às 9h15) , comuns a todos os inscritos. O torneio ocorre em um único bloco de 9h15 às 11h30 , em paralelo à oficina de robótica do Laboratório de Informática 1. A oficina e o espaço de troca de cartas funcionam em paralelo às rodadas, para que ninguém fique parado. Horário Atividade 09h15 – 09h25 Credenciamento e check-in · abertura do espaço de troca de cartas 09h25 – 09h35 Abertura oficial, explicação do regulamento e divulgação dos pareamentos 09h35 – 10h05 🖥️ 1ª rodada (TCG Live) · 🃏 1ª rodada (cartas físicas) · 🎓 oficina &quot;Aprenda a jogar&quot; 10h05 – 10h35 🖥️ 2ª rodada · 🃏 2ª rodada · 🔁 troca de cartas e partidas livres 10h35 – 11h05 🖥️ 3ª rodada · 🃏 3ª rodada · 🔁 troca de cartas e partidas livres 11h05 – 11h30 Apuração, anúncio da classificação, encerramento e organização do espaço Com duas horas e quinze de trilha, não há intervalo formal entre as rodadas nem fase de mata-mata . O tempo entre uma rodada e outra é apenas o necessário para a divulgação do novo pareamento. A organização pode ajustar o cronograma no dia conforme o número de participantes — por exemplo, reduzir as rodadas para 20 minutos se o número de inscritos exigir uma rodada a mais. As alterações são anunciadas presencialmente e valem para todos. "><summary>5. 📅 Cronograma do sábado</summary><div class="acc-body"><p>Este cronograma cobre apenas a trilha de Pokémon TCG. Antes dela, a manhã tem a <strong>palestra de abertura (8h às 9h)</strong> e o <strong>intervalo (9h às 9h15)</strong>, comuns a todos os inscritos. O torneio ocorre em <strong>um único bloco de 9h15 às 11h30</strong>, em paralelo à oficina de robótica do Laboratório de Informática 1. A oficina e o espaço de troca de cartas funcionam <strong>em paralelo</strong> às rodadas, para que ninguém fique parado.</p>
 <div class="tblscroll"><table>
 <thead>
 <tr>
@@ -750,36 +916,36 @@ footer a:hover{color:var(--cyan);transform:translateX(3px)}
 </thead>
 <tbody>
 <tr>
-<td><strong>09h00 – 09h10</strong></td>
+<td><strong>09h15 – 09h25</strong></td>
 <td>Credenciamento e check-in · abertura do espaço de troca de cartas</td>
 </tr>
 <tr>
-<td><strong>09h10 – 09h20</strong></td>
+<td><strong>09h25 – 09h35</strong></td>
 <td>Abertura oficial, explicação do regulamento e divulgação dos pareamentos</td>
 </tr>
 <tr>
-<td><strong>09h20 – 09h50</strong></td>
+<td><strong>09h35 – 10h05</strong></td>
 <td>🖥️ 1ª rodada (TCG Live) · 🃏 1ª rodada (cartas físicas) · 🎓 <strong>oficina "Aprenda a jogar"</strong></td>
 </tr>
 <tr>
-<td><strong>09h50 – 10h20</strong></td>
+<td><strong>10h05 – 10h35</strong></td>
 <td>🖥️ 2ª rodada · 🃏 2ª rodada · 🔁 troca de cartas e partidas livres</td>
 </tr>
 <tr>
-<td><strong>10h20 – 10h50</strong></td>
+<td><strong>10h35 – 11h05</strong></td>
 <td>🖥️ 3ª rodada · 🃏 3ª rodada · 🔁 troca de cartas e partidas livres</td>
 </tr>
 <tr>
-<td><strong>10h50 – 11h00</strong></td>
+<td><strong>11h05 – 11h30</strong></td>
 <td>Apuração, anúncio da classificação, encerramento e organização do espaço</td>
 </tr>
 </tbody>
 </table></div>
 <blockquote>
-<p>Com <strong>duas horas de evento, não há intervalo formal entre as rodadas nem fase de mata-mata</strong>. O tempo entre uma rodada e outra é apenas o necessário para a divulgação do novo pareamento.</p>
+<p>Com <strong>duas horas e quinze de trilha, não há intervalo formal entre as rodadas nem fase de mata-mata</strong>. O tempo entre uma rodada e outra é apenas o necessário para a divulgação do novo pareamento.</p>
 <p>A organização pode ajustar o cronograma no dia conforme o número de participantes — por exemplo, reduzir as rodadas para 20 minutos se o número de inscritos exigir uma rodada a mais. As alterações são anunciadas presencialmente e valem para todos.</p>
 </blockquote></div></details>
-<details class="acc" data-text="6. 🖥️ Modalidade 1 — Torneio Pokémon TCG Live (laboratório) Torneio principal do evento, jogado presencialmente nos computadores do laboratório , usando o cliente Pokémon TCG Live . Os pareamentos, o cronômetro e a contagem de pontos ficam a cargo da mesa da organização , que usa a plataforma Slowpo.ke e divulga os confrontos de cada rodada em projeção ou quadro na sala. 6.1 📝 Formato ✅ Jogos Md1 (melhor de 1) ✅ Formato Padrão (Standard) ✅ Partidas em sequência, todas no mesmo dia ✅ Rodadas de 30 minutos ✅ Sem check-in por rodada ✅ Somente fase suíça — 3 rodadas, sem mata-mata (não há tempo hábil dentro das 2 horas de evento) 6.2 📌 Rodadas e classificação O torneio tem 3 rodadas suíças de 30 minutos , independentemente do número de jogadores, para caber na janela de 9h às 11h: Rodada Horário 1ª rodada 09h20 – 09h50 2ª rodada 09h50 – 10h20 3ª rodada 10h20 – 10h50 Não há fase de mata-mata. A classificação final é a da fase suíça, apurada ao término da 3ª rodada. Mínimo de 4 jogadores para que o torneio aconteça. Abaixo disso, a atividade vira sessão livre de partidas amistosas no TCG Live. Havendo mais de 16 jogadores, a organização pode reduzir as rodadas para 20 minutos e realizar uma 4ª rodada, desde que o encerramento às 11h seja preservado. A decisão é anunciada na abertura. 6.3 💻 Uso dos computadores do laboratório Cada jogador usa uma máquina indicada pela organização e joga com a própria conta do Pokémon TCG Live. Traga seu login e senha — a organização não recupera contas nem cria contas no dia. Recomenda-se acessar a conta e conferir o deck com antecedência , em casa. Problemas de login não suspendem o relógio da rodada. É proibido instalar programas, alterar configurações do sistema, acessar sites não relacionados ao evento ou usar a máquina para qualquer finalidade estranha ao torneio. Não é permitido comer ou beber junto aos equipamentos. Ao final, o jogador deve encerrar a sessão da sua conta na máquina utilizada. Danos causados por uso indevido dos equipamentos são de responsabilidade do participante, na forma das normas do campus. 6.4 🕹️ Condução das partidas Não é preciso enviar lista de deck. Basta ter um deck montado dentro do Pokémon TCG Live, legal no formato Padrão. Você pode trocar de deck entre as rodadas. Os jogadores estão todos na mesma sala : o pareamento é divulgado pela organização e o contato com o adversário é presencial — encontre sua mesa e combine a partida diretamente. A partida é aberta dentro do Pokémon TCG Live por meio de desafio direto entre os jogadores ( Battle → Versus → Match with a friend ), usando o nick informado no check-in. Fiquem atentos ao cronômetro da rodada , exibido pela organização. Configure a partida considerando o tempo restante . O resultado deve ser informado na mesa da organização assim que a partida terminar , sendo obrigatório o report pelo vencedor . É obrigatório conferir o resultado registrado na tabela da rodada. A organização não se responsabiliza por resultados informados incorretamente. O início de cada partida é decidido na moeda , dentro do jogo. 6.5 ⏱️ W.O. e estouro de tempo Se o adversário não se apresentar em até 10 minutos após o início da rodada, o jogador presente deve chamar o juiz para aplicação de W.O. Se o jogador ausente chegar depois do W.O. aplicado, fica a critério de quem solicitou aceitar ou não jogar a partida. Não aceitando, o W.O. é mantido. Se ambos os jogadores estiverem ausentes por mais de 10 minutos após a liberação da rodada, é aplicada dupla derrota . Se o tempo da rodada se esgotar e a partida não tiver sido concluída porque um dos jogadores demorou a se apresentar, a vitória é de quem tinha mais tempo disponível — ou seja, de quem chegou primeiro à mesa. Essa regra se aplica apenas quando o segundo jogador demorou mais de 4 minutos para se apresentar. "><summary>6. 🖥️ Modalidade 1 — Torneio Pokémon TCG Live (laboratório)</summary><div class="acc-body"><p>Torneio principal do evento, jogado <strong>presencialmente nos computadores do laboratório</strong>, usando o cliente <strong>Pokémon TCG Live</strong>. Os <strong>pareamentos, o cronômetro e a contagem de pontos</strong> ficam a cargo da <strong>mesa da organização</strong>, que usa a plataforma <strong>Slowpo.ke</strong> e divulga os confrontos de cada rodada em projeção ou quadro na sala.</p>
+<details class="acc" data-text="6. 🖥️ Modalidade 1 — Torneio Pokémon TCG Live (laboratório) Torneio principal do evento, jogado presencialmente nos computadores do laboratório , usando o cliente Pokémon TCG Live . Os pareamentos, o cronômetro e a contagem de pontos ficam a cargo da mesa da organização , que usa a plataforma Slowpo.ke e divulga os confrontos de cada rodada em projeção ou quadro na sala. 6.1 📝 Formato ✅ Jogos Md1 (melhor de 1) ✅ Formato Padrão (Standard) ✅ Partidas em sequência, todas no mesmo dia ✅ Rodadas de 30 minutos ✅ Sem check-in por rodada ✅ Somente fase suíça — 3 rodadas, sem mata-mata (não há tempo hábil dentro das 2h15 da trilha) 6.2 📌 Rodadas e classificação O torneio tem 3 rodadas suíças de 30 minutos , independentemente do número de jogadores, para caber na janela de 9h15 às 11h30: Rodada Horário 1ª rodada 09h35 – 10h05 2ª rodada 10h05 – 10h35 3ª rodada 10h35 – 11h05 Não há fase de mata-mata. A classificação final é a da fase suíça, apurada ao término da 3ª rodada. Mínimo de 4 jogadores para que o torneio aconteça. Abaixo disso, a atividade vira sessão livre de partidas amistosas no TCG Live. Havendo mais de 16 jogadores, a organização pode reduzir as rodadas para 20 minutos e realizar uma 4ª rodada, desde que o encerramento às 11h30 seja preservado. A decisão é anunciada na abertura. 6.3 💻 Uso dos computadores do laboratório Cada jogador usa uma máquina indicada pela organização e joga com a própria conta do Pokémon TCG Live. Traga seu login e senha — a organização não recupera contas nem cria contas no dia. Recomenda-se acessar a conta e conferir o deck com antecedência , em casa. Problemas de login não suspendem o relógio da rodada. É proibido instalar programas, alterar configurações do sistema, acessar sites não relacionados ao evento ou usar a máquina para qualquer finalidade estranha ao torneio. Não é permitido comer ou beber junto aos equipamentos. Ao final, o jogador deve encerrar a sessão da sua conta na máquina utilizada. Danos causados por uso indevido dos equipamentos são de responsabilidade do participante, na forma das normas do campus. 6.4 🕹️ Condução das partidas Não é preciso enviar lista de deck. Basta ter um deck montado dentro do Pokémon TCG Live, legal no formato Padrão. Você pode trocar de deck entre as rodadas. Os jogadores estão todos na mesma sala : o pareamento é divulgado pela organização e o contato com o adversário é presencial — encontre sua mesa e combine a partida diretamente. A partida é aberta dentro do Pokémon TCG Live por meio de desafio direto entre os jogadores ( Battle → Versus → Match with a friend ), usando o nick informado no check-in. Fiquem atentos ao cronômetro da rodada , exibido pela organização. Configure a partida considerando o tempo restante . O resultado deve ser informado na mesa da organização assim que a partida terminar , sendo obrigatório o report pelo vencedor . É obrigatório conferir o resultado registrado na tabela da rodada. A organização não se responsabiliza por resultados informados incorretamente. O início de cada partida é decidido na moeda , dentro do jogo. 6.5 ⏱️ W.O. e estouro de tempo Se o adversário não se apresentar em até 10 minutos após o início da rodada, o jogador presente deve chamar o juiz para aplicação de W.O. Se o jogador ausente chegar depois do W.O. aplicado, fica a critério de quem solicitou aceitar ou não jogar a partida. Não aceitando, o W.O. é mantido. Se ambos os jogadores estiverem ausentes por mais de 10 minutos após a liberação da rodada, é aplicada dupla derrota . Se o tempo da rodada se esgotar e a partida não tiver sido concluída porque um dos jogadores demorou a se apresentar, a vitória é de quem tinha mais tempo disponível — ou seja, de quem chegou primeiro à mesa. Essa regra se aplica apenas quando o segundo jogador demorou mais de 4 minutos para se apresentar. "><summary>6. 🖥️ Modalidade 1 — Torneio Pokémon TCG Live (laboratório)</summary><div class="acc-body"><p>Torneio principal do evento, jogado <strong>presencialmente nos computadores do laboratório</strong>, usando o cliente <strong>Pokémon TCG Live</strong>. Os <strong>pareamentos, o cronômetro e a contagem de pontos</strong> ficam a cargo da <strong>mesa da organização</strong>, que usa a plataforma <strong>Slowpo.ke</strong> e divulga os confrontos de cada rodada em projeção ou quadro na sala.</p>
 <h3>6.1 📝 Formato</h3>
 <ul>
 <li>✅ Jogos <strong>Md1</strong> (melhor de 1)</li>
@@ -787,10 +953,10 @@ footer a:hover{color:var(--cyan);transform:translateX(3px)}
 <li>✅ Partidas em sequência, <strong>todas no mesmo dia</strong></li>
 <li>✅ Rodadas de <strong>30 minutos</strong></li>
 <li>✅ Sem check-in por rodada</li>
-<li>✅ <strong>Somente fase suíça</strong> — 3 rodadas, <strong>sem mata-mata</strong> (não há tempo hábil dentro das 2 horas de evento)</li>
+<li>✅ <strong>Somente fase suíça</strong> — 3 rodadas, <strong>sem mata-mata</strong> (não há tempo hábil dentro das 2h15 da trilha)</li>
 </ul>
 <h3>6.2 📌 Rodadas e classificação</h3>
-<p>O torneio tem <strong>3 rodadas suíças de 30 minutos</strong>, independentemente do número de jogadores, para caber na janela de 9h às 11h:</p>
+<p>O torneio tem <strong>3 rodadas suíças de 30 minutos</strong>, independentemente do número de jogadores, para caber na janela de 9h15 às 11h30:</p>
 <div class="tblscroll"><table>
 <thead>
 <tr>
@@ -801,22 +967,22 @@ footer a:hover{color:var(--cyan);transform:translateX(3px)}
 <tbody>
 <tr>
 <td>1ª rodada</td>
-<td>09h20 – 09h50</td>
+<td>09h35 – 10h05</td>
 </tr>
 <tr>
 <td>2ª rodada</td>
-<td>09h50 – 10h20</td>
+<td>10h05 – 10h35</td>
 </tr>
 <tr>
 <td>3ª rodada</td>
-<td>10h20 – 10h50</td>
+<td>10h35 – 11h05</td>
 </tr>
 </tbody>
 </table></div>
 <ul>
 <li><strong>Não há fase de mata-mata.</strong> A classificação final é a da fase suíça, apurada ao término da 3ª rodada.</li>
 <li><strong>Mínimo de 4 jogadores</strong> para que o torneio aconteça. Abaixo disso, a atividade vira <strong>sessão livre de partidas amistosas</strong> no TCG Live.</li>
-<li>Havendo mais de 16 jogadores, a organização pode <strong>reduzir as rodadas para 20 minutos</strong> e realizar uma 4ª rodada, desde que o encerramento às 11h seja preservado. A decisão é anunciada na abertura.</li>
+<li>Havendo mais de 16 jogadores, a organização pode <strong>reduzir as rodadas para 20 minutos</strong> e realizar uma 4ª rodada, desde que o encerramento às 11h30 seja preservado. A decisão é anunciada na abertura.</li>
 </ul>
 <h3>6.3 💻 Uso dos computadores do laboratório</h3>
 <ul>
@@ -864,13 +1030,13 @@ footer a:hover{color:var(--cyan);transform:translateX(3px)}
 <li>Recomenda-se <strong>identificar suas cartas e binders</strong> e <strong>não deixar material sem supervisão</strong>. A organização não se responsabiliza por perdas ou furtos.</li>
 <li>Situações de conflito devem ser comunicadas imediatamente à organização, que pode encerrar a troca e, se necessário, afastar os envolvidos do espaço.</li>
 </ul></div></details>
-<details class="acc" data-text="9. 🎓 Momento &quot;Aprenda a jogar&quot; Oficina aberta para quem nunca jogou Pokémon TCG ou quer relembrar as regras. A oficina é feita inteiramente no Pokémon TCG Live , nos computadores do laboratório. Não é preciso levar cartas nem ter baralho. Não há baralhos físicos de demonstração no evento: todo o aprendizado acontece no jogo digital, que já disponibiliza decks iniciais gratuitos a cada nova conta. Traga sua conta pronta. Quem ainda não tem deve criar uma conta gratuita do Pokémon Trainer Club e instalar/acessar o Pokémon TCG Live antes do evento — criar conta no dia consome quase todo o tempo da oficina. Conteúdo: navegação básica do TCG Live, montagem da mesa, fases do turno, tipos de carta (Pokémon, Treinador e Energia), condições de vitória, prêmios e noções de construção de deck. A oficina combina a explicação guiada pelos monitores com o tutorial do próprio jogo e termina em partidas acompanhadas , sem valer classificação. A oficina acontece em paralelo à 1ª rodada (09h20 – 09h50) , em turma única, usando máquinas reservadas pela organização para essa finalidade. Havendo procura e computadores livres, os monitores repetem a oficina durante a 2ª rodada. Participantes da oficina podem, no mesmo dia, continuar jogando partidas livres no TCG Live , havendo computadores disponíveis. "><summary>9. 🎓 Momento "Aprenda a jogar"</summary><div class="acc-body"><p>Oficina aberta para quem <strong>nunca jogou Pokémon TCG</strong> ou quer relembrar as regras. A oficina é feita <strong>inteiramente no Pokémon TCG Live</strong>, nos computadores do laboratório.</p>
+<details class="acc" data-text="9. 🎓 Momento &quot;Aprenda a jogar&quot; Oficina aberta para quem nunca jogou Pokémon TCG ou quer relembrar as regras. A oficina é feita inteiramente no Pokémon TCG Live , nos computadores do laboratório. Não é preciso levar cartas nem ter baralho. Não há baralhos físicos de demonstração no evento: todo o aprendizado acontece no jogo digital, que já disponibiliza decks iniciais gratuitos a cada nova conta. Traga sua conta pronta. Quem ainda não tem deve criar uma conta gratuita do Pokémon Trainer Club e instalar/acessar o Pokémon TCG Live antes do evento — criar conta no dia consome quase todo o tempo da oficina. Conteúdo: navegação básica do TCG Live, montagem da mesa, fases do turno, tipos de carta (Pokémon, Treinador e Energia), condições de vitória, prêmios e noções de construção de deck. A oficina combina a explicação guiada pelos monitores com o tutorial do próprio jogo e termina em partidas acompanhadas , sem valer classificação. A oficina acontece em paralelo à 1ª rodada (09h35 – 10h05) , em turma única, usando máquinas reservadas pela organização para essa finalidade. Havendo procura e computadores livres, os monitores repetem a oficina durante a 2ª rodada. Participantes da oficina podem, no mesmo dia, continuar jogando partidas livres no TCG Live , havendo computadores disponíveis. "><summary>9. 🎓 Momento "Aprenda a jogar"</summary><div class="acc-body"><p>Oficina aberta para quem <strong>nunca jogou Pokémon TCG</strong> ou quer relembrar as regras. A oficina é feita <strong>inteiramente no Pokémon TCG Live</strong>, nos computadores do laboratório.</p>
 <ul>
 <li><strong>Não é preciso levar cartas nem ter baralho.</strong> Não há baralhos físicos de demonstração no evento: todo o aprendizado acontece no jogo digital, que já disponibiliza <strong>decks iniciais gratuitos</strong> a cada nova conta.</li>
 <li><strong>Traga sua conta pronta.</strong> Quem ainda não tem deve criar uma <strong>conta gratuita do Pokémon Trainer Club</strong> e instalar/acessar o Pokémon TCG Live <strong>antes do evento</strong> — criar conta no dia consome quase todo o tempo da oficina.</li>
 <li>Conteúdo: navegação básica do TCG Live, montagem da mesa, fases do turno, tipos de carta (Pokémon, Treinador e Energia), condições de vitória, prêmios e noções de construção de deck.</li>
 <li>A oficina combina a <strong>explicação guiada pelos monitores</strong> com o <strong>tutorial do próprio jogo</strong> e termina em <strong>partidas acompanhadas</strong>, sem valer classificação.</li>
-<li>A oficina acontece <strong>em paralelo à 1ª rodada (09h20 – 09h50)</strong>, em turma única, usando <strong>máquinas reservadas pela organização</strong> para essa finalidade. Havendo procura e computadores livres, os monitores repetem a oficina durante a 2ª rodada.</li>
+<li>A oficina acontece <strong>em paralelo à 1ª rodada (09h35 – 10h05)</strong>, em turma única, usando <strong>máquinas reservadas pela organização</strong> para essa finalidade. Havendo procura e computadores livres, os monitores repetem a oficina durante a 2ª rodada.</li>
 <li>Participantes da oficina podem, no mesmo dia, <strong>continuar jogando partidas livres no TCG Live</strong>, havendo computadores disponíveis.</li>
 </ul></div></details>
 <details class="acc" data-text="10. 🎯 Vitória, empate, dupla derrota e pontuação 😁 Vitória Vence a partida quem ganhar 1 jogo dentro do Md1. No TCG Live, recomenda-se guardar um print da tela de vitória , contendo o nick dos dois jogadores, caso haja contestação do resultado informado. 😐 Empate Na fase suíça , os jogadores podem, em comum acordo, decidir pelo empate; ambos devem acionar o juiz para registro. Encerrado o tempo da rodada sem definição da partida, o resultado é registrado como empate para ambos, com o juiz ciente da ocorrência. ☹️ Dupla derrota Ausência dos dois jogadores por mais de 10 minutos após a liberação da rodada. Esgotamento do tempo sem conclusão da partida em razão de empate no primeiro confronto. 🎯 Pontuação (fase suíça) ✅ Vitória — 3 pontos ✅ Empate — 1 ponto ✅ Derrota — 0 pontos A classificação final é apurada ao término da 3ª rodada , pela soma dos pontos. O desempate segue os critérios padrão do sistema suíço, nesta ordem: pontos, opponents&#x27; win % e opponents&#x27; opponents&#x27; win % . "><summary>10. 🎯 Vitória, empate, dupla derrota e pontuação</summary><div class="acc-body"><h3>😁 Vitória</h3>
@@ -927,9 +1093,9 @@ footer a:hover{color:var(--cyan);transform:translateX(3px)}
 <li>Durante o evento, procure a <strong>mesa da organização</strong> ou levante a mão para chamar um juiz.</li>
 <li>Antes do evento, as dúvidas podem ser enviadas pelo <strong>formulário de contato da página oficial do evento</strong>.</li>
 </ul></div></details>
-<details class="acc" data-text="15. Disposições finais A inscrição no evento implica a aceitação integral deste regulamento . A organização pode ajustar cronograma, número e duração das rodadas e distribuição das máquinas conforme o número de participantes, comunicando as mudanças a todos, respeitando sempre o encerramento às 11h . Os casos omissos serão decididos pela organização do evento , em conjunto com a coordenação do curso, e suas decisões são finais. "><summary>15. Disposições finais</summary><div class="acc-body"><ul>
+<details class="acc" data-text="15. Disposições finais A inscrição no evento implica a aceitação integral deste regulamento . A organização pode ajustar cronograma, número e duração das rodadas e distribuição das máquinas conforme o número de participantes, comunicando as mudanças a todos, respeitando sempre o encerramento às 11h30 . Os casos omissos serão decididos pela organização do evento , em conjunto com a coordenação do curso, e suas decisões são finais. "><summary>15. Disposições finais</summary><div class="acc-body"><ul>
 <li>A inscrição no evento implica a <strong>aceitação integral deste regulamento</strong>.</li>
-<li>A organização pode ajustar cronograma, número e duração das rodadas e distribuição das máquinas conforme o número de participantes, comunicando as mudanças a todos, <strong>respeitando sempre o encerramento às 11h</strong>.</li>
+<li>A organização pode ajustar cronograma, número e duração das rodadas e distribuição das máquinas conforme o número de participantes, comunicando as mudanças a todos, <strong>respeitando sempre o encerramento às 11h30</strong>.</li>
 <li><strong>Os casos omissos serão decididos pela organização do evento</strong>, em conjunto com a coordenação do curso, e suas decisões são finais.</li>
 </ul></div></details>
     </div>
@@ -998,13 +1164,15 @@ footer a:hover{color:var(--cyan);transform:translateX(3px)}
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <span class="ifce-fallback" style="display:none"><span class="sq">IFCE</span><span>Instituto Federal do Ceará<small>Campus Horizonte</small></span></span>
         </span>
-        <p style="color:var(--ink-soft);font-size:.92rem;max-width:38ch">Campeonato de Pokémon TCG do IFCE Campus Horizonte. Evento gratuito, sem premiação, promovido com fins educativos, recreativos e de integração com a comunidade.</p>
+        <p style="color:var(--ink-soft);font-size:.92rem;max-width:38ch">Uma manhã de tecnologia no IFCE Campus Horizonte: palestra sobre soberania digital, campeonato de Pokémon TCG e oficina de robótica. Evento gratuito, sem premiação, promovido com fins educativos, recreativos e de integração com a comunidade.</p>
       </div>
       <div>
         <h4>O evento</h4>
-        <a href="#evento">Atividades</a>
+        <a href="#manha">A manhã</a>
+        <a href="#palestra">Palestra</a>
+        <a href="#evento">Pokémon TCG</a>
+        <a href="#robotica">Oficina de Robótica</a>
         <a href="#programacao">Programação</a>
-        <a href="#aprenda">Aprenda a jogar</a>
         <a href="#regulamento">Regulamento</a>
         <a href="#inscricao">Inscrição</a>
         <a href="#duvidas">Dúvidas</a>
@@ -1012,8 +1180,8 @@ footer a:hover{color:var(--cyan);transform:translateX(3px)}
       <div>
         <h4>Quando e onde</h4>
         <a href="#top">Sábado, 19/09/2026</a>
-        <a href="#top">9h às 11h</a>
-        <a href="#top">Laboratório de Informática 2</a>
+        <a href="#top">8h às 11h30</a>
+        <a href="#top">Laboratórios de Informática 1 e 2</a>
         <a href="#top">IFCE Campus Horizonte</a>
         <a href="https://tcg.pokemon.com/pt-br/tcgl/" target="_blank" rel="noopener">Pokémon TCG Live ↗</a>
       </div>
@@ -1058,14 +1226,14 @@ const io = new IntersectionObserver((entries) => {
 }, {threshold:.12, rootMargin:'0px 0px -40px'});
 document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
-/* ---------- COUNTDOWN (19/09/2026 09:00, horário de Fortaleza UTC-3) ---------- */
-const TARGET = new Date('2026-09-19T09:00:00-03:00').getTime();
+/* ---------- COUNTDOWN (19/09/2026 08:00 — início da palestra, horário de Fortaleza UTC-3) ---------- */
+const TARGET = new Date('2026-09-19T08:00:00-03:00').getTime();
 const pad = n => String(n).padStart(2,'0');
 function tick(){
   const diff = TARGET - Date.now();
   const box = document.getElementById('countdown');
   if (diff <= 0){
-    box.innerHTML = '<div class="cd live" style="flex:1 1 100%"><b>É HOJE!</b><span>Nos vemos no Laboratório 2</span></div>';
+    box.innerHTML = '<div class="cd live" style="flex:1 1 100%"><b>É HOJE!</b><span>Nos vemos no campus</span></div>';
     clearInterval(timer); return;
   }
   const d = Math.floor(diff/864e5), h = Math.floor(diff%864e5/36e5), m = Math.floor(diff%36e5/6e4), s = Math.floor(diff%6e4/1e3);
@@ -1141,9 +1309,30 @@ search.addEventListener('input', () => {
 
 /* ---------- FORMULÁRIOS ---------- */
 document.querySelectorAll('.opt input').forEach(inp => {
-  const sync = () => inp.closest('.opt').classList.toggle('checked', inp.checked);
-  inp.addEventListener('change', sync); sync();
+  const sync = i => i.closest('.opt').classList.toggle('checked', i.checked);
+  inp.addEventListener('change', () => {
+    /* num grupo de rádios só dispara o evento do que foi marcado — os irmãos precisam
+       ser ressincronizados na mão, senão o destaque visual fica em dois de uma vez. */
+    if (inp.type === 'radio' && inp.name) document.querySelectorAll('.opt input[name="' + inp.name + '"]').forEach(sync);
+    else sync(inp);
+  });
+  sync(inp);
 });
+
+/* ---------- TRILHA (as duas atividades das 9h15 são simultâneas) ---------- */
+const blocoTCG = document.getElementById('bloco-tcg');
+const trilhaRadios = [...document.querySelectorAll('input[name=trilha]')];
+const trilhaEscolhida = () => (trilhaRadios.find(r => r.checked) || {}).value || '';
+function checkTrilha(){
+  const tcg = trilhaEscolhida() === 'Pokémon TCG Challenge';
+  blocoTCG.classList.toggle('show', tcg);
+  if (!tcg) blocoTCG.querySelectorAll('.field').forEach(f => f.classList.remove('invalid'));
+}
+trilhaRadios.forEach(r => r.addEventListener('change', () => {
+  checkTrilha();
+  document.getElementById('trilhas').closest('.field').classList.remove('invalid');
+}));
+checkTrilha();
 
 const nasc = document.getElementById('nascimento'), guard = document.getElementById('guard'), hint = document.getElementById('idade-hint');
 function idadeNoEvento(dateStr){
@@ -1183,12 +1372,33 @@ function validaInscricao(){
   need(g('whatsapp'), g('whatsapp').value.replace(/\D/g,'').length >= 10);
   need(g('nascimento'), !!g('nascimento').value && idadeNoEvento(g('nascimento').value) !== null);
   need(g('vinculo'), !!g('vinculo').value);
-  need(g('experiencia'), !!g('experiencia').value);
 
-  const mods = [...document.querySelectorAll('input[name=modalidade]:checked')].map(i => i.value);
-  const modField = document.getElementById('modalidades').closest('.field');
-  modField.classList.toggle('invalid', mods.length === 0);
-  if (!mods.length) { ok = false; if (!first) first = document.getElementById('modalidades'); }
+  const trilha = trilhaEscolhida();
+  const trilhaField = document.getElementById('trilhas').closest('.field');
+  const errTrilha = document.getElementById('err-trilha');
+  const palestra = g('opt-palestra').checked;
+  /* A oficina de robótica é exclusiva para alunos do IFCE (só o próprio corpo discente
+     tem acesso aos kits do laboratório), e "só a palestra" sem marcar a palestra não
+     inscreve a pessoa em nada. */
+  let trilhaErro = '';
+  if (!trilha) trilhaErro = 'Escolha uma das opções acima.';
+  else if (trilha === 'Oficina de Robótica (LEGO Mindstorms)' && g('vinculo').value === 'Comunidade externa')
+    trilhaErro = 'A oficina de robótica é exclusiva para alunos do IFCE. Escolha o Pokémon TCG Challenge, que é aberto à comunidade.';
+  else if (trilha === 'Apenas a palestra' && !palestra)
+    trilhaErro = 'Marque a palestra acima — sem ela, não há atividade nenhuma na sua inscrição.';
+  errTrilha.textContent = trilhaErro || 'Escolha uma das opções acima.';
+  trilhaField.classList.toggle('invalid', !!trilhaErro);
+  if (trilhaErro) { ok = false; if (!first) first = document.getElementById('trilhas'); }
+
+  /* Modalidades, nick e experiência só existem para quem escolheu a trilha do TCG. */
+  const noTCG = trilha === 'Pokémon TCG Challenge';
+  const mods = noTCG ? [...document.querySelectorAll('input[name=modalidade]:checked')].map(i => i.value) : [];
+  if (noTCG){
+    need(g('experiencia'), !!g('experiencia').value);
+    const modField = document.getElementById('modalidades').closest('.field');
+    modField.classList.toggle('invalid', mods.length === 0);
+    if (!mods.length) { ok = false; if (!first) first = document.getElementById('modalidades'); }
+  }
 
   if (guard.classList.contains('show')){
     need(g('resp_nome'), g('resp_nome').value.trim().length >= 5);
@@ -1201,7 +1411,7 @@ function validaInscricao(){
   });
 
   if (first) first.scrollIntoView({behavior:'smooth', block:'center'});
-  return {ok, mods};
+  return {ok, mods, trilha, palestra};
 }
 
 async function enviar(payload){
@@ -1227,7 +1437,7 @@ async function enviar(payload){
 const formI = document.getElementById('form-inscricao'), btnI = document.getElementById('btn-inscricao'), stI = document.getElementById('status-inscricao');
 formI.addEventListener('submit', async e => {
   e.preventDefault();
-  const {ok, mods} = validaInscricao();
+  const {ok, mods, trilha, palestra} = validaInscricao();
   if (!ok){ stI.className = 'status bad'; stI.textContent = 'Confira os campos destacados.'; return; }
   btnI.disabled = true; btnI.innerHTML = '<span class="spin"></span> Enviando…';
   stI.className = 'status'; stI.textContent = '';
@@ -1236,8 +1446,13 @@ formI.addEventListener('submit', async e => {
     form:'inscricao',
     nome:g('nome').value.trim(), email:g('email').value.trim(), whatsapp:g('whatsapp').value.trim(),
     nascimento:g('nascimento').value, idade_no_evento:idadeNoEvento(g('nascimento').value),
-    vinculo:g('vinculo').value, modalidades:mods.join(' | '), nick:g('nick').value.trim(),
-    experiencia:g('experiencia').value,
+    vinculo:g('vinculo').value,
+    palestra:palestra ? 'Sim' : 'Não', trilha:trilha,
+    /* Quem não escolheu a trilha do TCG não manda esses três — evita gravar resposta
+       antiga na planilha se a pessoa trocou de trilha depois de já ter preenchido. */
+    modalidades:mods.join(' | '),
+    nick:mods.length ? g('nick').value.trim() : '',
+    experiencia:mods.length ? g('experiencia').value : '',
     responsavel_nome:g('resp_nome').value.trim(), responsavel_contato:g('resp_contato').value.trim(),
     observacoes:g('obs').value.trim(),
     aceite_regulamento:g('aceite').checked ? 'Sim' : 'Não',
@@ -1264,7 +1479,7 @@ document.getElementById('nova-inscricao').addEventListener('click', () => {
   formI.reset();
   document.querySelectorAll('.opt').forEach(o => o.classList.remove('checked'));
   document.querySelectorAll('.field').forEach(f => f.classList.remove('invalid'));
-  guard.classList.remove('show'); checkIdade();
+  guard.classList.remove('show'); checkIdade(); checkTrilha();
   document.getElementById('success-inscricao').classList.remove('show');
   formI.classList.remove('form-hidden');
   stI.textContent = '';
