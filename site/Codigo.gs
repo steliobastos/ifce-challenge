@@ -62,15 +62,19 @@ var LIMITES = {
 var ABAS = {
   inscricao: {
     nome: 'Inscrições',
+    // Colunas novas entram sempre NO FIM das duas listas: as linhas já gravadas
+    // continuam alinhadas com os cabeçalhos antigos.
     colunas: ['Carimbo de data/hora', 'Nome completo', 'E-mail', 'WhatsApp', 'Data de nascimento',
               'Idade no evento', 'Vínculo', 'Modalidades', 'Nick TCG Live', 'Experiência',
               'Responsável (nome)', 'Responsável (telefone)', 'Observações',
-              'Aceitou o regulamento', 'Consentiu (LGPD)', 'Autoriza imagem'],
+              'Aceitou o regulamento', 'Consentiu (LGPD)', 'Autoriza imagem',
+              'Palestra (8h)', 'Trilha (9h15 – 11h30)'],
     campos: [null, 'nome', 'email', 'whatsapp', 'nascimento',
              'idade_no_evento', 'vinculo', 'modalidades', 'nick', 'experiencia',
              'responsavel_nome', 'responsavel_contato', 'observacoes',
-             'aceite_regulamento', 'consentimento_lgpd', 'autoriza_imagem'],
-    obrigatorios: ['nome', 'email', 'whatsapp', 'nascimento', 'vinculo', 'modalidades', 'experiencia']
+             'aceite_regulamento', 'consentimento_lgpd', 'autoriza_imagem',
+             'palestra', 'trilha'],
+    obrigatorios: ['nome', 'email', 'whatsapp', 'nascimento', 'vinculo', 'trilha']
   },
   duvida: {
     nome: 'Dúvidas',
@@ -107,6 +111,11 @@ function doPost(e) {
     var faltando = cfg.obrigatorios.filter(function (c) { return !limpo[c]; });
     if (faltando.length) return json_({ ok: false, error: 'campos obrigatorios ausentes' });
     if (!validarEmail_(limpo.email)) return json_({ ok: false, error: 'e-mail invalido' });
+    // Modalidades e experiência só existem para quem escolheu a trilha do Pokémon TCG;
+    // quem vai à oficina de robótica ou só à palestra manda esses campos vazios.
+    if (tipo === 'inscricao' && ehTrilhaTCG_(limpo.trilha) && (!limpo.modalidades || !limpo.experiencia)) {
+      return json_({ ok: false, error: 'campos obrigatorios ausentes' });
+    }
 
     var aba = pegarAba_(cfg);
     if (excedeuTetoDiario_(aba)) return json_({ ok: false, error: 'limite diario atingido' });
@@ -163,6 +172,11 @@ function validarEmail_(v) {
   return /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(String(v || ''));
 }
 
+/** A trilha do TCG é a única que usa modalidades, nick e experiência. */
+function ehTrilhaTCG_(trilha) {
+  return String(trilha || '').toLowerCase().indexOf('tcg') !== -1;
+}
+
 /* ═══════════════════════════ PLANILHA ═══════════════════════════ */
 
 function planilha_() {
@@ -180,6 +194,17 @@ function pegarAba_(cfg) {
        .setFontWeight('bold').setBackground('#46A151').setFontColor('#FFFFFF');
     aba.setFrozenRows(1);
     aba.setColumnWidths(1, cfg.colunas.length, 160);
+  } else {
+    // A aba já existia de uma versão anterior do formulário: completa os cabeçalhos
+    // que faltam no fim, senão as colunas novas chegam sem título na planilha.
+    var largura = aba.getLastColumn();
+    if (largura < cfg.colunas.length) {
+      var novas = cfg.colunas.length - largura;
+      aba.getRange(1, largura + 1, 1, novas)
+         .setValues([cfg.colunas.slice(largura)])
+         .setFontWeight('bold').setBackground('#46A151').setFontColor('#FFFFFF');
+      aba.setColumnWidths(largura + 1, novas, 160);
+    }
   }
   return aba;
 }
@@ -213,17 +238,23 @@ function enviarConfirmacao_(d) {
   if (!d.email) return;
   try {
     var menor = Number(d.idade_no_evento) < 16;
+    var tcg = ehTrilhaTCG_(d.trilha);
+    var local = tcg ? 'Laboratório de Informática 2'
+              : (String(d.trilha || '').toLowerCase().indexOf('rob') !== -1 ? 'Laboratório de Informática 1' : '—');
     var corpo =
       '<div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;color:#16202B">' +
       '<h2 style="color:#46A151;margin-bottom:.2em">Inscrição confirmada</h2>' +
-      '<p>Olá, <b>' + escapar_(d.nome) + '</b>! Sua inscrição no <b>IFCE Challenge — Pokémon TCG</b> foi registrada.</p>' +
+      '<p>Olá, <b>' + escapar_(d.nome) + '</b>! Sua inscrição no <b>IFCE Challenge</b> foi registrada.</p>' +
       '<table style="border-collapse:collapse;margin:1em 0;font-size:14px">' +
         linha_('Data', 'Sábado, 19 de setembro de 2026') +
-        linha_('Horário', '9h às 11h (check-in até 9h10)') +
-        linha_('Local', 'Laboratório de Informática 2 — IFCE Campus Horizonte') +
-        linha_('Atividades', escapar_(d.modalidades)) +
+        linha_('Local', 'IFCE Campus Horizonte') +
+        linha_('Palestra (8h – 9h)', d.palestra === 'Sim' ? 'Sim, vou assistir' : 'Não vou assistir') +
+        linha_('Sua trilha (9h15 – 11h30)', escapar_(d.trilha) + (local === '—' ? '' : ' — ' + local)) +
+        (tcg ? linha_('Atividades no TCG', escapar_(d.modalidades)) : '') +
       '</table>' +
       '<p>A entrada é gratuita e <b>não há premiação</b>: o evento é de integração e aprendizado.</p>' +
+      '<p>O check-in das trilhas é feito no laboratório entre <b>9h15 e 9h25</b>. Quem chegar depois fica fora do ' +
+      'pareamento da primeira rodada do torneio.</p>' +
       (menor
         ? '<p style="background:#FFF8E1;border-left:4px solid #FFD24A;padding:10px 14px">' +
           '<b>Atenção:</b> por ter menos de 16 anos, a participação só é possível acompanhado do responsável (' +
@@ -238,7 +269,7 @@ function enviarConfirmacao_(d) {
 
     MailApp.sendEmail({
       to: d.email,
-      subject: 'Inscrição confirmada — IFCE Challenge (19/09, 9h)',
+      subject: 'Inscrição confirmada — IFCE Challenge (19/09, a partir das 8h)',
       htmlBody: corpo
     });
   } catch (err) {
