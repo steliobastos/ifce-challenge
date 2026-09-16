@@ -772,7 +772,6 @@ footer a:hover{color:var(--cyan);transform:translateX(3px)}
             <div class="opts" id="trilhas">
               <label class="opt"><input type="radio" name="trilha" value="Pokémon TCG Challenge"><span><b>Pokémon TCG Challenge</b><small>Laboratório de Informática 2 · aberto à comunidade</small></span></label>
               <label class="opt"><input type="radio" name="trilha" value="Oficina de Robótica (LEGO Mindstorms)"><span><b>Oficina de Robótica</b><small>Laboratório de Informática 1 · exclusiva para alunos do IFCE</small></span></label>
-              <label class="opt"><input type="radio" name="trilha" value="Apenas a palestra"><span><b>Só a palestra</b><small>Não vou ficar para a segunda parte da manhã</small></span></label>
             </div>
             <span class="hint">As duas trilhas acontecem no mesmo horário, em laboratórios diferentes — só dá para escolher uma.</span>
             <span class="err-msg" id="err-trilha">Escolha uma das opções acima.</span>
@@ -1377,15 +1376,12 @@ function validaInscricao(){
   const trilhaField = document.getElementById('trilhas').closest('.field');
   const errTrilha = document.getElementById('err-trilha');
   const palestra = g('opt-palestra').checked;
-  /* A oficina de robótica é exclusiva para alunos do IFCE (só o próprio corpo discente
-     tem acesso aos kits do laboratório), e "só a palestra" sem marcar a palestra não
-     inscreve a pessoa em nada. */
+  /* A oficina de robótica é exclusiva para alunos do IFCE: só o próprio corpo
+     discente tem acesso aos kits do laboratório. */
   let trilhaErro = '';
   if (!trilha) trilhaErro = 'Escolha uma das opções acima.';
   else if (trilha === 'Oficina de Robótica (LEGO Mindstorms)' && g('vinculo').value === 'Comunidade externa')
     trilhaErro = 'A oficina de robótica é exclusiva para alunos do IFCE. Escolha o Pokémon TCG Challenge, que é aberto à comunidade.';
-  else if (trilha === 'Apenas a palestra' && !palestra)
-    trilhaErro = 'Marque a palestra acima — sem ela, não há atividade nenhuma na sua inscrição.';
   errTrilha.textContent = trilhaErro || 'Escolha uma das opções acima.';
   trilhaField.classList.toggle('invalid', !!trilhaErro);
   if (trilhaErro) { ok = false; if (!first) first = document.getElementById('trilhas'); }
